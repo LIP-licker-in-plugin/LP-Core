@@ -12,7 +12,7 @@ publishing {
             groupId = 'com.darksoldier1404.dppc'
             artifactId = 'DPP-Core'
             version = '1.12.2-SNAPSHOT'
-            artifact '../jars/'+ jar.archiveName
+            artifact 'libs/'+ jar.archiveName
         }
     }
     repositories {
@@ -32,9 +32,7 @@ build {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 }
-jar{
-    destinationDirectory.set(file("$rootDir/jars"))
-}
+
 group 'github.com/darksoldier1404'
 version = '1.0.0.0'
 

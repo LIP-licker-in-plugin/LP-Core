@@ -1,0 +1,14 @@
+name: DPP-Core
+version: 1.0.0.0
+main: com.darksoldier1404.dppc.DPPCore
+api-version: 1.15
+authors: [ DEAD_POOLIO_ ]
+loadbefore:
+  - Essentials
+  - PlaceholderAPI
+  - ProtocolLib
+  - DP-LegendaryCash
+  - DP-VirtualStorage
+  - DP-SimplePrefix
+commands:
+  dppc:

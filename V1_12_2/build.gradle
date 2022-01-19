@@ -12,7 +12,7 @@ publishing {
             groupId = 'com.darksoldier1404.dppc'
             artifactId = 'DPP-Core'
             version = '1.12.2-SNAPSHOT'
-            artifact 'libs/'+ jar.archiveName
+            artifact 'build/libs/'+ jar.archiveName
         }
     }
     repositories {

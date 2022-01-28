@@ -39,7 +39,7 @@ public class DPPCore extends JavaPlugin {
         config = ConfigUtils.loadDefaultPluginConfig(plugin);
         PluginUtil.loadALLPlugins();
         Bukkit.getScheduler().runTaskLater(plugin, () -> enabledPlugins.keySet().forEach(SchedulerUtils::initUpdateChecker), 1200L);
-        getCommand("duc").setExecutor(new DUCCommand());
+        getCommand("dppc").setExecutor(new DUCCommand());
         dphm = new DPHManager();
     }
 

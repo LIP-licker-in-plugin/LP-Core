@@ -2,6 +2,9 @@ package com.darksoldier1404.dppc.api.entity;
 
 import com.darksoldier1404.dppc.DPPCore;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.util.Vector;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -9,6 +12,26 @@ import java.util.List;
 @SuppressWarnings("all")
 public class TargetAPI {
     private static final DPPCore plugin = DPPCore.getInstance();
+
+    @Nullable
+    public static Entity getTargetedEntity(Entity from) {
+        if(from instanceof Player){
+            Player p = (Player) from;
+            Vector v = p.getEyeLocation().getDirection();
+            return p.getWorld().getEntities().stream().filter(e -> e.getLocation().distance(p.getEyeLocation()) <= v.length()).findFirst().orElse(null);
+        }
+        return null;
+    }
+
+    @Nullable
+    public static Entity getTargetedEntity(Entity from, double maxDistance) {
+        if(from instanceof Player){
+            Player p = (Player) from;
+            Vector v = p.getEyeLocation().getDirection();
+            return p.getWorld().getEntities().stream().filter(e -> e.getLocation().distance(p.getEyeLocation()) <= v.length() && e.getLocation().distance(p.getEyeLocation()) <= maxDistance).findFirst().orElse(null);
+        }
+        return null;
+    }
 
     @Nullable
     public static Entity getNearestTargetFromList(Entity center, double maxDistance) {

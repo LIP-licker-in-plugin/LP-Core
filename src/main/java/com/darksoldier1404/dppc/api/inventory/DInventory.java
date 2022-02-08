@@ -7,6 +7,7 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -19,6 +20,7 @@ public class DInventory extends CraftInventoryCustom {
     private int pages = 0;
     private int currentPage;
     private ItemStack[] pageTools = new ItemStack[8];
+    private final ArrayList<ItemStack> items = new ArrayList<>();
     private Map<Integer, ItemStack[]> pageItems = new HashMap<>();
 
     public DInventory(InventoryHolder holder, String title, int size, JavaPlugin plugin) {
@@ -69,6 +71,10 @@ public class DInventory extends CraftInventoryCustom {
         return pageItems;
     }
 
+    public ArrayList<ItemStack> getItems() {
+        return items;
+    }
+
     public void setUsePage(boolean usePage) {
         this.usePage = usePage;
     }
@@ -108,8 +114,8 @@ public class DInventory extends CraftInventoryCustom {
 
     // add pageContent
     public void addPageContent(ItemStack[] items) {
-        pages++;
         pageItems.put(pages, items);
+        pages++;
     }
 
     public void update() {

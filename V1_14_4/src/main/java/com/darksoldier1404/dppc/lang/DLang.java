@@ -18,8 +18,8 @@ public class DLang {
     private Map<String, YamlConfiguration> langFiles = new HashMap<>();
 
     public DLang(@NotNull String langKey, JavaPlugin plugin) {
-        loadDefaultLangFiles();
         this.plugin = plugin;
+        loadDefaultLangFiles();
         try {
             currentLang = langFiles.get(langKey);
         } catch (Exception e) {

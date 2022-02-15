@@ -1,6 +1,6 @@
 name: DPP-Core
-version: 1.0.0.2
-main: com.darksoldier1404.duc.UniversalCore
+version: 1.0.0.3
+main: com.darksoldier1404.dppc.DPPCore
 api-version: 1.17
 authors: [ DEAD_POOLIO_ ]
 loadbefore:

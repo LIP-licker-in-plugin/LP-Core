@@ -46,6 +46,8 @@ public class DPPCore extends JavaPlugin {
             getLogger().warning("Essentials 플러그인이 설치되어있지 않습니다.");
             getLogger().warning("MoneyAPI 사용 불가.");
             return;
+        }else{
+            ess = (Essentials) pl;
         }
         ess = (Essentials) pl;
         Bukkit.getScheduler().runTaskLater(plugin, () -> enabledPlugins.keySet().forEach(SchedulerUtils::initUpdateChecker), 1200L);

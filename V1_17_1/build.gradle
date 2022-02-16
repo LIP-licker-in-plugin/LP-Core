@@ -34,7 +34,7 @@ build {
 }
 
 group 'github.com/darksoldier1404'
-version = '2.0.0.3'
+version = '2.0.0.4'
 
 repositories {
     mavenCentral()
@@ -56,6 +56,7 @@ dependencies {
     compileOnly 'org.spigotmc:spigot-api:R0.1:1.17'
     compileOnly "org.bstats:bstats-bukkit:2.2.1"
     compileOnly 'com.darksoldier1404.dvs:DP-VirtualStorage:1.0.0.41'
+    compileOnly 'com.earth2me.essentials:EssentialsX:2.19.3'
 }
 
 test {

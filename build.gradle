@@ -23,7 +23,7 @@ publishing {
     }
 }
 group 'github.com/darksoldier1404'
-version = '2.0.0.3'
+version = '2.0.0.4'
 
 
 compileJava.options.encoding = 'UTF-8'
@@ -93,6 +93,7 @@ dependencies {
     compileOnly 'com.darksoldier1404.dvs:DP-VirtualStorage:1.0.0.41'
     compileOnly 'com.mojang.authlib:authlib:3.2.38'
     compileOnly 'com.mojang.datafixers:datafixerupper:4.0.26'
+    compileOnly 'com.earth2me.essentials:EssentialsX:2.19.3'
 }
 test {
     useJUnitPlatform()

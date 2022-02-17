@@ -39,7 +39,7 @@ public class NBT {
      * @return ItemStack
      */
     @NotNull
-    public static ItemStack c(ItemStack objitem, String key) {
+    public static ItemStack removeTag(ItemStack objitem, String key) {
         net.minecraft.server.v1_12_R1.ItemStack item = CraftItemStack.asNMSCopy(objitem);
         NBTTagCompound ntc = item.hasTag() ? item.getTag() : new NBTTagCompound();
         item.setTag(ntc);

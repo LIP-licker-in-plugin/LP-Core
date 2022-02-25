@@ -129,8 +129,8 @@ public class ConfigUtils {
                 log.info("[DUC] " + plugin.getName() + " " + fileName + " 파일 생성 성공.");
                 return YamlConfiguration.loadConfiguration(file);
             }
-            log.info("[DUC] " + plugin.getName() + " " + fileName + " 이미 존재하는 파일입니다.");
-            return null;
+            log.info("[DUC] " + plugin.getName() + " " + fileName + " 기존 파일 로드.");
+            return YamlConfiguration.loadConfiguration(file);
         } catch (Exception e) {
             log.warning("[DUC] " + plugin.getName() + " " + fileName + " 파일 생성 실패.");
             e.printStackTrace();
@@ -147,8 +147,8 @@ public class ConfigUtils {
                 log.info("[DUC] " + plugin.getName() + " " + fileName + " 파일 생성 성공.");
                 return YamlConfiguration.loadConfiguration(file);
             }
-            log.info("[DUC] " + plugin.getName() + " " + fileName + " 이미 존재하는 파일입니다.");
-            return null;
+            log.info("[DUC] " + plugin.getName() + " " + fileName + " 기존 파일 로드.");
+            return YamlConfiguration.loadConfiguration(file);
         } catch (Exception e) {
             log.warning("[DUC] " + plugin.getName() + " " + fileName + " 파일 생성 실패.");
             e.printStackTrace();

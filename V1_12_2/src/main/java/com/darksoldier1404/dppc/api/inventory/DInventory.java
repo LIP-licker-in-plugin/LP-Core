@@ -31,6 +31,7 @@ public class DInventory extends CraftInventoryCustom {
 
     public DInventory(InventoryHolder holder, String title, int size, boolean usePage, JavaPlugin plugin) {
         super(holder, size, title);
+//        super(null, InventoryType.CHEST, title);
         this.handlerName = plugin.getName();
         this.usePage = usePage;
         currentPage = 0;

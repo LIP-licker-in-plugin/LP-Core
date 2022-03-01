@@ -1,5 +1,6 @@
 package com.darksoldier1404.dppc.utils;
 
+@SuppressWarnings("unused")
 public class Quadruple<A, B, C, D> {
     public A a;
     public B b;
@@ -14,7 +15,7 @@ public class Quadruple<A, B, C, D> {
     }
 
     public static <A, B, C, D> Quadruple<A, B, C, D> of(A a, B b, C c, D d) {
-        return new Quadruple<A, B, C, D>(a, b, c, d);
+        return new Quadruple<>(a, b, c, d);
     }
 
     public A getA() {

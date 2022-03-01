@@ -11,6 +11,7 @@ public enum PluginName {
     SimpleAnnouncement("DP-SimpleAnnouncement", 13561),
     EquipmentAttribution("DP-EquipmentAttribution", 13663),
     SimpleShop("DP-SimpleShop", 14331),
+    RPG("DP-RPG", 14497),
     ;
 
     private final String name;

@@ -20,11 +20,11 @@ public class DInventory extends CraftInventoryCustom {
     private int currentPage;
     private ItemStack[] pageTools = new ItemStack[8];
     private Map<Integer, ItemStack[]> pageItems = new HashMap<>();
+    private Object obj;
 
     public DInventory(InventoryHolder holder, String title, int size, JavaPlugin plugin) {
         super(holder, size, title);
         usePage = false;
-        currentPage = 0;
         handlerName = plugin.getName();
         uuid = UUID.randomUUID();
     }
@@ -33,8 +33,15 @@ public class DInventory extends CraftInventoryCustom {
         super(holder, size, title);
         this.handlerName = plugin.getName();
         this.usePage = usePage;
-        currentPage = 0;
         uuid = UUID.randomUUID();
+    }
+
+    public Object getObj() {
+        return obj;
+    }
+
+    public void setObj(Object obj) {
+        this.obj = obj;
     }
 
     public UUID getUniqueId() {

@@ -40,6 +40,7 @@ public class DPPCore extends JavaPlugin {
         log = getLogger();
         log.info(prefix + "DPP-Core 플러그인 활성화.");
         config = ConfigUtils.loadDefaultPluginConfig(plugin);
+        dphm = new DPHManager();
         PluginUtil.loadALLPlugins();
         Plugin pl = getServer().getPluginManager().getPlugin("Essentials");
         if (pl == null) {
@@ -49,10 +50,8 @@ public class DPPCore extends JavaPlugin {
         }else{
             ess = (Essentials) pl;
         }
-        ess = (Essentials) pl;
         Bukkit.getScheduler().runTaskLater(plugin, () -> enabledPlugins.keySet().forEach(SchedulerUtils::initUpdateChecker), 1200L);
         getCommand("dppc").setExecutor(new DUCCommand());
-        dphm = new DPHManager();
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.darksoldier1404.dppc.utils;
 
-@SuppressWarnings("all")
+@SuppressWarnings("unused")
 public class Triple<A, B, C> {
     public A a;
 
@@ -15,7 +15,7 @@ public class Triple<A, B, C> {
     }
 
     public static <A, B, C> Triple<A, B, C> of(final A a, final B b, final C c) {
-        return new Triple<A, B, C>(a, b, c);
+        return new Triple<>(a, b, c);
     }
 
     public A getA() {

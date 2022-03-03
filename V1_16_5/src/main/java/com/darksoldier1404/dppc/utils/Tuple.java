@@ -1,6 +1,6 @@
 package com.darksoldier1404.dppc.utils;
 
-@SuppressWarnings("all")
+@SuppressWarnings("unused")
 public class Tuple<A, B> {
     public A a;
 
@@ -12,7 +12,7 @@ public class Tuple<A, B> {
     }
 
     public static <A, B> Tuple<A, B> of(final A a, final B b) {
-        return new Tuple<A, B>(a, b);
+        return new Tuple<>(a, b);
     }
 
     public A getA() {

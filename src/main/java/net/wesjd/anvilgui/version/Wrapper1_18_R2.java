@@ -12,13 +12,13 @@ import net.minecraft.world.inventory.Container;
 import net.minecraft.world.inventory.ContainerAccess;
 import net.minecraft.world.inventory.ContainerAnvil;
 import net.minecraft.world.inventory.Containers;
-import org.bukkit.craftbukkit.v1_18_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_18_R1.event.CraftEventFactory;
+import org.bukkit.craftbukkit.v1_18_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_18_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_18_R2.event.CraftEventFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
-public final class Wrapper1_18_R1 implements VersionWrapper {
+public final class Wrapper1_18_R2 implements VersionWrapper {
     private int getRealNextContainerId(Player player) {
         return toNMS(player).nextContainerCounter();
     }
@@ -55,12 +55,12 @@ public final class Wrapper1_18_R1 implements VersionWrapper {
 
     @Override
     public void setActiveContainerDefault(Player player) {
-        (toNMS(player)).bW = (toNMS(player)).bV;
+        (toNMS(player)).bV = (toNMS(player)).bU;
     }
 
     @Override
     public void setActiveContainer(Player player, Object container) {
-        (toNMS(player)).bW = (Container) container;
+        (toNMS(player)).bV = (Container) container;
     }
 
     @Override
@@ -85,7 +85,7 @@ public final class Wrapper1_18_R1 implements VersionWrapper {
 
     private static class AnvilContainer extends ContainerAnvil {
         public AnvilContainer(Player player, int containerId, String guiTitle) {
-            super(containerId, ((CraftPlayer) player).getHandle().fq(),
+            super(containerId, ((CraftPlayer) player).getHandle().fr(),
                     ContainerAccess.a(((CraftWorld) player.getWorld()).getHandle(), new BlockPosition(0, 0, 0)));
             this.checkReachable = false;
             setTitle(new ChatMessage(guiTitle));

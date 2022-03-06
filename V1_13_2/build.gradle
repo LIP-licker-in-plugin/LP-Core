@@ -17,7 +17,7 @@ publishing {
     }
     repositories {
         maven {
-            url "http://dpnw.site:8081/repository/maven-snapshots/"
+            url "http://dpp.dpnw.site:8081/repository/maven-snapshots/"
             allowInsecureProtocol = true
         }
     }
@@ -34,12 +34,12 @@ build {
 }
 
 group 'github.com/darksoldier1404'
-version = '2.0.1.12'
+version = '2.0.2.13'
 
 repositories {
     mavenCentral()
     maven {
-        url "http://dpnw.site:8081/repository/maven-public/"
+        url "http://dpp.dpnw.site:8081/repository/maven-public/"
         allowInsecureProtocol = true
     }
     maven {

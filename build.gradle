@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 configurations {
-    jar.archiveName = 'DPP-Core-_v1_18_1-SNAPSHOT.jar'
+    jar.archiveName = 'DPP-Core-_v1_18_2-SNAPSHOT.jar'
 }
 
 publishing {
@@ -11,7 +11,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'com.darksoldier1404.dppc'
             artifactId = 'DPP-Core'
-            version = '1.18.1-SNAPSHOT'
+            version = '1.18.2-SNAPSHOT'
             artifact 'build/libs/'+ jar.archiveName
         }
     }
@@ -23,7 +23,7 @@ publishing {
     }
 }
 group 'github.com/darksoldier1404'
-version = '2.0.2.14'
+version = '2.0.2.15'
 
 
 compileJava.options.encoding = 'UTF-8'

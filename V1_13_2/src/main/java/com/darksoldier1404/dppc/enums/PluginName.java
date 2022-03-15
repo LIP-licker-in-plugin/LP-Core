@@ -12,6 +12,7 @@ public enum PluginName {
     EquipmentAttribution("DP-EquipmentAttribution", 13663),
     SimpleShop("DP-SimpleShop", 14331),
     RPG("DP-RPG", 14497),
+    OreGen("DP-OreGen", 14637),
     ;
 
     private final String name;

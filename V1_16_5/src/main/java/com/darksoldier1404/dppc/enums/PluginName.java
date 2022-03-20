@@ -13,6 +13,9 @@ public enum PluginName {
     SimpleShop("DP-SimpleShop", 14331),
     RPG("DP-RPG", 14497),
     OreGen("DP-OreGen", 14637),
+    MultiWorld("DP-MultiWorld", 14686),
+    ItemCommand("DP-ItemCommand", 14687),
+    EasyEntitySpawn("DP-EasyEntitySpawn", 14688),
     ;
 
     private final String name;

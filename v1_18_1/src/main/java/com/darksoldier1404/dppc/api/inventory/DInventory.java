@@ -2,7 +2,7 @@ package com.darksoldier1404.dppc.api.inventory;
 
 
 import com.darksoldier1404.dppc.utils.NBT;
-import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftInventoryCustom;
+import org.bukkit.craftbukkit.v1_18_R1.inventory.CraftInventoryCustom;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,7 +17,7 @@ public class DInventory extends CraftInventoryCustom {
     private final UUID uuid;
     private boolean usePage;
     private int pages = 0;
-    private int currentPage;
+    private int currentPage = 0;
     private ItemStack[] pageTools = new ItemStack[8];
     private Map<Integer, ItemStack[]> pageItems = new HashMap<>();
     private Object obj;
@@ -115,8 +115,8 @@ public class DInventory extends CraftInventoryCustom {
 
     // add pageContent
     public void addPageContent(ItemStack[] items) {
-        pages++;
         pageItems.put(pages, items);
+        pages++;
     }
 
     public void update() {

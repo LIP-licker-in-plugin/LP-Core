@@ -23,7 +23,7 @@ publishing {
     }
 }
 group 'github.com/darksoldier1404'
-version = '2.0.2.16'
+version = '2.0.2.23'
 
 
 compileJava.options.encoding = 'UTF-8'
@@ -87,10 +87,9 @@ dependencies {
     implementation 'org.jetbrains:annotations:20.1.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1-1.18'
-    compileOnly 'org.spigotmc:spigot-api-R0.1:1.18'
-    compileOnly "org.bstats:bstats-bukkit:2.2.1"
-    compileOnly 'com.darksoldier1404.dvs:DP-VirtualStorage:1.0.0.41'
+    compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.18.2'
+    compileOnly 'org.spigotmc:spigot-api:R0.1:1.18.2'
+    compileOnly 'org.bstats:bstats-bukkit:3.0.0'
     compileOnly 'com.mojang.authlib:authlib:3.2.38'
     compileOnly 'com.mojang.datafixers:datafixerupper:4.0.26'
     compileOnly 'com.earth2me.essentials:EssentialsX:2.19.3'

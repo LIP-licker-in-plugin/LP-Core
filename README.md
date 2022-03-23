@@ -17,7 +17,7 @@ compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.15.2-SNAPSHOT'
 compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.14.4-SNAPSHOT'
 compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.13.2-SNAPSHOT'
 ```
-Spigot & CraftBukkit
+## Spigot & CraftBukkit
 ```gradle
 compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.18.2'
 compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.18.1'

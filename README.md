@@ -63,3 +63,21 @@ compileOnly 'org.spigotmc:spigot-api:R0.1:1.13.2'
 compileOnly 'org.spigotmc:spigot-api:R0.1:1.13.1'
 compileOnly 'org.spigotmc:spigot-api:R0.1:1.13'
 ```
+## API
+### DInventory
+```java
+DInventory inv = new DInventory(null, "DInventory Test", 54, true, plugin);
+ItemStack pane = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+ItemStack prev = NBT.setStringTag(new ItemStack(Material.PINK_DYE), "prev", "true");
+ItemMeta im = prev.getItemMeta();
+im.setDisplayName("이전 페이지");
+prev.setItemMeta(im);
+ItemStack next = NBT.setStringTag(new ItemStack(Material.LIME_DYE), "next", "true");
+im = next.getItemMeta();
+im.setDisplayName("다음 페이지");
+next.setItemMeta(im);
+inv.setPageTools(new ItemStack[]{pane, pane, prev, pane, pane, pane, next, pane, pane});
+inv.addPageContent(/*ItemStack[]*/);
+inv.update();
+Player#openInventory(inv);
+```

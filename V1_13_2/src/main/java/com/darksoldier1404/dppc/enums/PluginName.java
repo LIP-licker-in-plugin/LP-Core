@@ -18,6 +18,7 @@ public enum PluginName {
     EasyEntitySpawn("DP-EasyEntitySpawn", 14688),
     HotTime("DP-HotTime", 14732),
     EasyMessages("DP-EasyMessages", 14733),
+    EasyWarning("DP-EasyWarning", 14737),
     ;
 
     private final String name;

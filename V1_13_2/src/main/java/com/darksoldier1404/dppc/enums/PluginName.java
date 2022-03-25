@@ -16,6 +16,8 @@ public enum PluginName {
     MultiWorld("DP-MultiWorld", 14686),
     ItemCommand("DP-ItemCommand", 14687),
     EasyEntitySpawn("DP-EasyEntitySpawn", 14688),
+    HotTime("DP-HotTime", 14732),
+    EasyMessages("DP-EasyMessages", 14733),
     ;
 
     private final String name;

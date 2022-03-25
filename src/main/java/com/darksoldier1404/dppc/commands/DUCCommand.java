@@ -1,6 +1,7 @@
 package com.darksoldier1404.dppc.commands;
 
 import com.darksoldier1404.dppc.DPPCore;
+import com.darksoldier1404.dppc.utils.InventoryUtils;
 import com.darksoldier1404.dppc.utils.UpdateChecker;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

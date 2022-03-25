@@ -33,17 +33,6 @@ public class DUCCommand implements CommandExecutor {
                 plugin.enabledPlugins.values().forEach(UpdateChecker::check);
             }
         }
-        if(args[0].equals("t")) {
-            if(sender instanceof Player) {
-                Player p = (Player) sender;
-                if(InventoryUtils.mergeItem(p.getInventory(), p.getItemInHand())) {
-                    p.sendMessage(plugin.prefix + "아이템이 합쳐졌습니다.");
-                } else{
-                    p.sendMessage(plugin.prefix + "아이템을 합칠 수 없습니다.");
-                }
-                return false;
-            }
-        }
         return false;
     }
 }

@@ -19,6 +19,7 @@ public enum PluginName {
     HotTime("DP-HotTime", 14732),
     EasyMessages("DP-EasyMessages", 14733),
     EasyWarning("DP-EasyWarning", 14737),
+    EasyWarp("DP-EasyWarp", 14751),
     ;
 
     private final String name;

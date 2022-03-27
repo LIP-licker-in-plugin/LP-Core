@@ -128,7 +128,9 @@ public class DInventory extends CraftInventoryCustom {
         }
         int pt = 0;
         for (int i = getSize() - 9; i < getSize(); i++) {
-            setItem(i, NBT.setStringTag(pageTools[pt], "pageTools", "true"));
+            if (pageTools[pt] != null) {
+                setItem(i, NBT.setStringTag(pageTools[pt], "pageTools", "true"));
+            }
             pt++;
         }
     }

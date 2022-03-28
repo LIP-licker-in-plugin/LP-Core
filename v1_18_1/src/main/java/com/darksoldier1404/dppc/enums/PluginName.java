@@ -20,6 +20,7 @@ public enum PluginName {
     EasyMessages("DP-EasyMessages", 14733),
     EasyWarning("DP-EasyWarning", 14737),
     EasyWarp("DP-EasyWarp", 14751),
+    LegendaryStorage("DP-LegendaryStorage", 14782),
     ;
 
     private final String name;

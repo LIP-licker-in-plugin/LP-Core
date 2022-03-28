@@ -17,7 +17,7 @@ public class DInventory extends CraftInventoryCustom {
     private final UUID uuid;
     private boolean usePage;
     private int pages = 0;
-    private int currentPage;
+    private int currentPage = 0;
     private ItemStack[] pageTools = new ItemStack[8];
     private Map<Integer, ItemStack[]> pageItems = new HashMap<>();
     private Object obj;
@@ -115,8 +115,8 @@ public class DInventory extends CraftInventoryCustom {
 
     // add pageContent
     public void addPageContent(ItemStack[] items) {
-        pages++;
         pageItems.put(pages, items);
+        pages++;
     }
 
     public void update() {

@@ -21,6 +21,22 @@ public class DataContainer {
         this.prefix = ColorUtils.applyColor(config.getString("Settings.prefix"));
     }
 
+    public YamlConfiguration getConfig() {
+        return config;
+    }
+
+    public void setConfig(YamlConfiguration config) {
+        this.config = config;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
     public void addUserData(UUID uuid, YamlConfiguration data) {
         if(this.data.containsKey("udata")) {
             Map<UUID, YamlConfiguration> udata = (Map<UUID, YamlConfiguration>) this.data.get("udata");
@@ -69,10 +85,6 @@ public class DataContainer {
 
     public Object get(String key) {
         return data.get(key);
-    }
-
-    public String getPrefix() {
-        return prefix;
     }
 
     public void reload() {

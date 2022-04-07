@@ -64,7 +64,7 @@ compileOnly 'org.spigotmc:spigot-api:R0.1:1.13.1'
 compileOnly 'org.spigotmc:spigot-api:R0.1:1.13'
 ```
 ## API
-### DInventory
+### DInventory - Custom Inventory Class
 ```java
 DInventory inv = new DInventory(null, "DInventory Test", 54, true, plugin);
 ItemStack pane = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
@@ -81,7 +81,7 @@ inv.addPageContent(/*ItemStack[]*/);
 inv.update();
 Player#openInventory(inv);
 ```
-### InventoryUtils
+### InventoryUtils - Simple Inventory Utility
 ```java
 Player p = Bukkit.getPlayer("DEAD_POOLIO_");
 ItemStack item = new ItemStack(Material.DIAMOND_SWORD, 10);
@@ -91,10 +91,37 @@ if(InventoryUtils.hasEnoughSpace(p.getInventory().getStorageContents(), item)) {
     p.sendMessage("Inventory has not enough space.");
 }
 ```
-### ColorUtils
+### ColorUtils - Simplest Color Applier
 ```java
 String s = "&aTest String"
 s = ColorUtils.applyColor(s);
 String s2 = "<#FFFFFF>TestString"
 s2 = ColorUtils.applyColor(s2);
+```
+### DLang
+```java
+private static TestPlugin plugin;
+public static DLang lang;
+public static YamlConfiguration config;
+
+public void onEnable() {
+    plugin = this;
+    config = ConfigUtils.loadDefaultPluginConfig(plugin);
+    lang = new DLang(config.getString("Settings.Lang") == null ? "English" : config.getString("Settings.Lang"), plugin);
+}
+
+public void test() {
+    String arg = "Test"
+    lang.get("test_text");
+    // Test Text
+    lang.getWithArgs("test_text2", arg);
+    // Test Text: Test
+}
+```
+#### English.yml in /lang/English.yml
+```yaml
+Lang: English
+
+test_text: "Test Text"
+test_text2: "Test Text: {0}"
 ```

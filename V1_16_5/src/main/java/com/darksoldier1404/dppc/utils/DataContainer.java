@@ -1,5 +1,6 @@
 package com.darksoldier1404.dppc.utils;
 
+import com.darksoldier1404.dppc.lang.DLang;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.Nullable;
@@ -12,6 +13,7 @@ import java.util.UUID;
 public class DataContainer {
     private final JavaPlugin plugin;
     private YamlConfiguration config;
+    private DLang lang;
     private String prefix;
     private final Map<String, Object> data = new HashMap<>();
 
@@ -19,6 +21,10 @@ public class DataContainer {
         this.plugin = plugin;
         this.config = ConfigUtils.loadDefaultPluginConfig(plugin);
         this.prefix = ColorUtils.applyColor(config.getString("Settings.prefix"));
+        this.lang = new DLang(config.getString("Settings.Lang") == null ? "Korean" : config.getString("Settings.Lang"), plugin);
+        if(config.getString("Settings.Lang") == null) {
+            config.set("Settings.Lang", "Korean");
+        }
     }
 
     public YamlConfiguration getConfig() {
@@ -90,5 +96,9 @@ public class DataContainer {
     public void reload() {
         config = ConfigUtils.reloadPluginConfig(plugin, config);
         prefix = ColorUtils.applyColor(config.getString("Settings.prefix"));
+        lang = new DLang(config.getString("Settings.Lang") == null ? "Korean" : config.getString("Settings.Lang"), plugin);
+        if(config.getString("Settings.Lang") == null) {
+            config.set("Settings.Lang", "Korean");
+        }
     }
 }

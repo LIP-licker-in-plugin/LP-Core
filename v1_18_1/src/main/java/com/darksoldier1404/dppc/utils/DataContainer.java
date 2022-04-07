@@ -22,6 +22,9 @@ public class DataContainer {
         this.config = ConfigUtils.loadDefaultPluginConfig(plugin);
         this.prefix = ColorUtils.applyColor(config.getString("Settings.prefix"));
         this.lang = new DLang(config.getString("Settings.Lang") == null ? "Korean" : config.getString("Settings.Lang"), plugin);
+        if(config.getString("Settings.Lang") == null) {
+            config.set("Settings.Lang", "Korean");
+        }
     }
 
     public YamlConfiguration getConfig() {
@@ -94,5 +97,8 @@ public class DataContainer {
         config = ConfigUtils.reloadPluginConfig(plugin, config);
         prefix = ColorUtils.applyColor(config.getString("Settings.prefix"));
         lang = new DLang(config.getString("Settings.Lang") == null ? "Korean" : config.getString("Settings.Lang"), plugin);
+        if(config.getString("Settings.Lang") == null) {
+            config.set("Settings.Lang", "Korean");
+        }
     }
 }

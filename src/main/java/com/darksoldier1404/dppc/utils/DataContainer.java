@@ -43,6 +43,14 @@ public class DataContainer {
         this.prefix = prefix;
     }
 
+    public DLang getLang() {
+        return lang;
+    }
+
+    public void setLang(DLang lang) {
+        this.lang = lang;
+    }
+
     public void addUserData(UUID uuid, YamlConfiguration data) {
         if(this.data.containsKey("udata")) {
             Map<UUID, YamlConfiguration> udata = (Map<UUID, YamlConfiguration>) this.data.get("udata");

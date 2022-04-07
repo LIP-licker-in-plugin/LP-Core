@@ -64,6 +64,15 @@ compileOnly 'org.spigotmc:spigot-api:R0.1:1.13.1'
 compileOnly 'org.spigotmc:spigot-api:R0.1:1.13'
 ```
 ## API
+### ConfigUtils - Custom Config Utils
+```java
+public static YamlConfiguration config;
+public static TestPlugin plugin;
+public void onEnable() {
+    plugin = this;
+    config = ConfigUtils.loadDefaultPluginConfig(plugin);
+}
+```
 ### DInventory - Custom Inventory Class
 ```java
 DInventory inv = new DInventory(null, "DInventory Test", 54, true, plugin);
@@ -98,7 +107,7 @@ s = ColorUtils.applyColor(s);
 String s2 = "<#FFFFFF>TestString"
 s2 = ColorUtils.applyColor(s2);
 ```
-### DLang
+### DLang - Multi Language Support
 ```java
 private static TestPlugin plugin;
 public static DLang lang;

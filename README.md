@@ -81,3 +81,13 @@ inv.addPageContent(/*ItemStack[]*/);
 inv.update();
 Player#openInventory(inv);
 ```
+### InventoryUtils
+```java
+Player p = Bukkit.getPlayer("DEAD_POOLIO_");
+        ItemStack item = new ItemStack(Material.DIAMOND_SWORD, 10);
+        if(InventoryUtils.hasEnoughSpace(p.getInventory().getStorageContents(), item)) {
+            p.getInventory().addItem(item);
+        }else{
+            p.sendMessage("Inventory has not enough space.");
+        }
+```

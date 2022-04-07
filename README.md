@@ -91,3 +91,10 @@ if(InventoryUtils.hasEnoughSpace(p.getInventory().getStorageContents(), item)) {
     p.sendMessage("Inventory has not enough space.");
 }
 ```
+### ColorUtils
+```java
+String s = "&aTest String"
+s = ColorUtils.applyColor(s);
+String s2 = "<#FFFFFF>TestString"
+s2 = ColorUtils.applyColor(s2);
+```

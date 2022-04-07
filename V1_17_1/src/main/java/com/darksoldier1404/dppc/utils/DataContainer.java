@@ -109,4 +109,8 @@ public class DataContainer {
             config.set("Settings.Lang", "Korean");
         }
     }
+
+    public void save() {
+        ConfigUtils.savePluginConfig(plugin, config);
+    }
 }

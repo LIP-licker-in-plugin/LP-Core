@@ -93,6 +93,21 @@ public class DataContainer {
         }
     }
 
+    public void saveUserData(UUID uuid) {
+        if(this.data.containsKey("udata")) {
+            Map<UUID, YamlConfiguration> udata = (Map<UUID, YamlConfiguration>) this.data.get("udata");
+            ConfigUtils.saveCustomData(plugin, udata.get(uuid), uuid+".yml", "udata");
+        }
+    }
+
+    public void saveAndLeave(UUID uuid) {
+        if(this.data.containsKey("udata")) {
+            Map<UUID, YamlConfiguration> udata = (Map<UUID, YamlConfiguration>) this.data.get("udata");
+            ConfigUtils.saveCustomData(plugin, udata.get(uuid), uuid+".yml", "udata");
+            udata.remove(uuid);
+        }
+    }
+
     public void set(String key, Object value) {
         data.put(key, value);
     }

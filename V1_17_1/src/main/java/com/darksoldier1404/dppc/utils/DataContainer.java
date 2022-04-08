@@ -47,8 +47,15 @@ public class DataContainer {
         return lang;
     }
 
-    public void setLang(DLang lang) {
+        public void setLang(DLang lang) {
         this.lang = lang;
+    }
+    
+    public void initUserData(UUID uuid) {
+        if(!hasUserData(uuid)) {
+            YamlConfiguration data = ConfigUtils.loadCustomData(plugin, uuid+".yml", "udata");
+            addUserData(uuid, data);
+        }
     }
 
     public void addUserData(UUID uuid, YamlConfiguration data) {

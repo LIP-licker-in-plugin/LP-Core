@@ -24,4 +24,3 @@ public class ItemStackSerializer {
         return YamlConfiguration.loadConfiguration(new StringReader(s)).getItemStack("item");
     }
 }
-

@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @SuppressWarnings("all")
 public class UpdateChecker {
@@ -25,12 +26,14 @@ public class UpdateChecker {
             try {
                 HttpURLConnection connection = (HttpURLConnection) new URL("https://raw.githubusercontent.com/darksoldier1404/" + pluginName + "/master/src/main/resources/plugin.yml").openConnection();
                 connection.connect();
-                String rr = new BufferedReader(new InputStreamReader(connection.getInputStream())).lines().toList().get(1).split(" ")[1];
+                String rr = new BufferedReader(new InputStreamReader(connection.getInputStream())).lines().collect(Collectors.toList()).get(1).split(" ")[1];
                 if (!currentVersion.equals(rr)) {
                     log.info(prefix + pluginName + " : A new version of "+pluginName+" is available! " + rr);
                     log.info(prefix + pluginName + " : This plugin's version is " + currentVersion);
                     log.info(prefix + pluginName + " : 최신 버전이 존재합니다! " + rr);
                     log.info(prefix + pluginName + " : 이 플러그인의 버전은 " + currentVersion + " 입니다. 업데이트를 해주시기 바랍니다.");
+                    log.info(prefix + pluginName + " : 업데이트 다운로드 : http://dpp.dpnw.site:8080/job" + pluginName);
+                    log.info(prefix + pluginName + " : Update Download : http://dpp.dpnw.site:8080/job" + pluginName);
                 } else {
                     log.info(prefix + pluginName + " : 이 플러그인은 최신버전 입니다." + currentVersion);
                 }
@@ -47,11 +50,12 @@ public class UpdateChecker {
             try {
                 HttpURLConnection connection = (HttpURLConnection) new URL("https://raw.githubusercontent.com/darksoldier1404/" + pluginName + "/master/src/main/resources/plugin.yml").openConnection();
                 connection.connect();
-                String rr = new BufferedReader(new InputStreamReader(connection.getInputStream())).lines().toList().get(1).split(" ")[1];
+                String rr = new BufferedReader(new InputStreamReader(connection.getInputStream())).lines().collect(Collectors.toList()).get(1).split(" ")[1];
                 if (!currentVersion.equals(rr)) {
                     p.sendMessage(prefix + pluginName + " : 최신 버전이 존재합니다! " + rr);
                     p.sendMessage(prefix + pluginName + " : 이 플러그인의 버전은 " + currentVersion + " 입니다. 업데이트를 해주시기 바랍니다.");
-                    p.sendMessage(prefix + pluginName + " : 업데이트 다운로드 : https://github.com/darksoldier1404/" + pluginName + "/releases");
+                    p.sendMessage(prefix + pluginName + " : 업데이트 다운로드 : http://dpp.dpnw.site:8080/job" + pluginName);
+                    p.sendMessage(prefix + pluginName + " : Update Download : http://dpp.dpnw.site:8080/job" + pluginName);
                 } else {
                     p.sendMessage(prefix + pluginName + " : 이 플러그인은 최신버전 입니다." + currentVersion);
                 }

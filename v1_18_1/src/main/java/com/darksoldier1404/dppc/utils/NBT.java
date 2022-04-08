@@ -23,7 +23,6 @@ public class NBT {
      * @param key     require String
      * @param value   will be cast as String
      * @return ItemStack
-     * @
      */
     @NotNull
     public static ItemStack setObjectTag(ItemStack objitem, String key, Object value) {
@@ -48,10 +47,7 @@ public class NBT {
         return CraftItemStack.asBukkitCopy(item);
     }
 
-    /**
-     * @param objitem require ItemStack
-     * @return Map<String, Object>
-     */
+
     @NotNull
     public static ItemStack removeAllTags(ItemStack objitem) {
         net.minecraft.world.item.ItemStack item = CraftItemStack.asNMSCopy(objitem);
@@ -241,10 +237,6 @@ public class NBT {
         return ntc.e(key);
     }
 
-    /**
-     * @param objitem ItemStack
-     * @return Map<String, Object>
-     */
     @Nullable
     public static Map<String, String> getAllStringTag(ItemStack objitem) {
         net.minecraft.world.item.ItemStack item = CraftItemStack.asNMSCopy(objitem);

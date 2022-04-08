@@ -22,7 +22,6 @@ public class NBT {
      * @param objitem require ItemStack
      * @param key     require String
      * @param value   will be cast as String
-     * @
      * @return ItemStack
      */
     @NotNull
@@ -48,10 +47,7 @@ public class NBT {
         return CraftItemStack.asBukkitCopy(item);
     }
 
-    /**
-     * @param objitem require ItemStack
-     * @return Map<String, Object>
-     */
+
     @NotNull
     public static ItemStack removeAllTags(ItemStack objitem) {
         net.minecraft.server.v1_15_R1.ItemStack item = CraftItemStack.asNMSCopy(objitem);
@@ -241,10 +237,6 @@ public class NBT {
         return ntc.hasKey(key);
     }
 
-    /**
-     * @param objitem ItemStack
-     * @return Map<String, Object>
-     */
     @Nullable
     public static Map<String, String> getAllStringTag(ItemStack objitem) {
         net.minecraft.server.v1_15_R1.ItemStack item = CraftItemStack.asNMSCopy(objitem);

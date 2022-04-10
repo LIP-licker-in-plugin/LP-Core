@@ -21,6 +21,8 @@ public enum PluginName {
     EasyWarning("DP-EasyWarning", 14737),
     EasyWarp("DP-EasyWarp", 14751),
     LegendaryStorage("DP-LegendaryStorage", 14782),
+    Lotto("DP-Lotto", 14901),
+    ChatChannel("DP-ChatChannel", 14902),
     ;
 
     private final String name;

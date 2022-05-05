@@ -23,6 +23,9 @@ public enum PluginName {
     LegendaryStorage("DP-LegendaryStorage", 14782),
     Lotto("DP-Lotto", 14901),
     ChatChannel("DP-ChatChannel", 14902),
+    RandomBox("DP-RandomBox", 15134),
+    GiftBox("DP-GiftBox", 15135),
+    BackPack("DP-BackPack", 15136),
     ;
 
     private final String name;

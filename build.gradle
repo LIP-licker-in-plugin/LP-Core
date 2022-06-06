@@ -5,7 +5,9 @@ plugins {
 configurations {
     jar.archiveName = 'DPP-Core-_v1_18_2-SNAPSHOT.jar'
 }
-
+jar {
+    destinationDirectory.set(file("$rootDir/jars"))
+}
 publishing {
     publications {
         mavenJava(MavenPublication) {

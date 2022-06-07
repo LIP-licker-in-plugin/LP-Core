@@ -4,7 +4,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagString;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_19_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_18_R2.inventory.CraftItemStack;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
@@ -19,7 +19,7 @@ import java.util.Map;
 public class NBT {
     
     public static NBTTagCompound getTagCompound(net.minecraft.world.item.ItemStack item) {
-        return item.s() ? item.u() : new NBTTagCompound();
+        return item.s() ? item.t() : new NBTTagCompound();
     }
 
     /**

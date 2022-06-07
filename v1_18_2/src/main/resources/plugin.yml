@@ -1,8 +1,8 @@
 name: DPP-Core
 version: 2.0.2.39
 main: com.darksoldier1404.dppc.DPPCore
-api-version: 1.18
 authors: [ DEAD_POOLIO_ ]
+api-version: 1.18
 loadbefore:
   - Essentials
   - PlaceholderAPI

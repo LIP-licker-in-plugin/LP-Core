@@ -2,7 +2,7 @@ package com.darksoldier1404.dppc.api.inventory;
 
 
 import com.darksoldier1404.dppc.utils.NBT;
-import org.bukkit.craftbukkit.v1_18_R2.inventory.CraftInventoryCustom;
+import org.bukkit.craftbukkit.v1_19_R1.inventory.CraftInventoryCustom;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;

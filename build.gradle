@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 configurations {
-    jar.archiveName = 'DPP-Core-_v1_18_2-SNAPSHOT.jar'
+    jar.archiveName = 'DPP-Core-_v1_19-SNAPSHOT.jar'
 }
 jar {
     destinationDirectory.set(file("$rootDir/jars"))
@@ -13,7 +13,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'com.darksoldier1404.dppc'
             artifactId = 'DPP-Core'
-            version = '1.18.2-SNAPSHOT'
+            version = '1.19-SNAPSHOT'
             artifact 'jars/'+ jar.archiveName
         }
     }
@@ -89,10 +89,11 @@ dependencies {
     implementation 'org.jetbrains:annotations:23.0.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
-    compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.18.2'
-    compileOnly 'org.spigotmc:spigot-api:R0.1:1.18.2'
+    compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.19'
+    compileOnly 'org.spigotmc:spigot-api:R0.1:1.19'
     compileOnly 'org.bstats:bstats-bukkit:3.0.0'
     compileOnly 'com.mojang.authlib:authlib:3.2.38'
+    compileOnly 'com.mojang:brigadier:1.0.18'
     compileOnly 'com.mojang.datafixers:datafixerupper:4.0.26'
     compileOnly 'com.earth2me.essentials:EssentialsX:2.19.3'
 }

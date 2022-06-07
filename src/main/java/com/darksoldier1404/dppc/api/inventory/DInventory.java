@@ -3,16 +3,18 @@ package com.darksoldier1404.dppc.api.inventory;
 
 import com.darksoldier1404.dppc.utils.NBT;
 import org.bukkit.craftbukkit.v1_18_R2.inventory.CraftInventoryCustom;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 @SuppressWarnings("unused")
-public class DInventory extends CraftInventoryCustom {
+public class DInventory implements InventoryHolder {
     private final String handlerName;
     private final UUID uuid;
     private boolean usePage;
@@ -21,16 +23,17 @@ public class DInventory extends CraftInventoryCustom {
     private ItemStack[] pageTools = new ItemStack[8];
     private Map<Integer, ItemStack[]> pageItems = new HashMap<>();
     private Object obj;
+    private final Inventory inv;
 
     public DInventory(InventoryHolder holder, String title, int size, JavaPlugin plugin) {
-        super(holder, size, title);
+        this.inv = new CraftInventoryCustom(holder, size, title);
         usePage = false;
         handlerName = plugin.getName();
         uuid = UUID.randomUUID();
     }
 
     public DInventory(InventoryHolder holder, String title, int size, boolean usePage, JavaPlugin plugin) {
-        super(holder, size, title);
+        this.inv = new CraftInventoryCustom(holder, size, title);
         this.handlerName = plugin.getName();
         this.usePage = usePage;
         uuid = UUID.randomUUID();
@@ -120,16 +123,16 @@ public class DInventory extends CraftInventoryCustom {
     }
 
     public void update() {
-        clear();
+        inv.clear();
         for (int i = 0; i < pageItems.get(currentPage).length; i++) {
             if (pageItems.get(currentPage)[i] != null) {
-                setItem(i, pageItems.get(currentPage)[i]);
+                inv.setItem(i, pageItems.get(currentPage)[i]);
             }
         }
         int pt = 0;
-        for (int i = getSize() - 9; i < getSize(); i++) {
+        for (int i = inv.getSize() - 9; i < inv.getSize(); i++) {
             if (pageTools[pt] != null) {
-                setItem(i, NBT.setStringTag(pageTools[pt], "pageTools", "true"));
+                inv.setItem(i, NBT.setStringTag(pageTools[pt], "pageTools", "true"));
             }
             pt++;
         }
@@ -157,5 +160,11 @@ public class DInventory extends CraftInventoryCustom {
         currentPage = page;
         update();
         return true;
+    }
+
+    @NotNull
+    @Override
+    public Inventory getInventory() {
+        return inv;
     }
 }

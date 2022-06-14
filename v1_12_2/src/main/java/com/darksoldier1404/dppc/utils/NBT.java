@@ -42,8 +42,18 @@ public class NBT {
         net.minecraft.server.v1_12_R1.ItemStack item = CraftItemStack.asNMSCopy(objitem);
         NBTTagCompound ntc = item.hasTag() ? item.getTag() : new NBTTagCompound();
         item.setTag(ntc);
-        item.e(key);
+        item.setTag(c(key, item.getTag()));
         return CraftItemStack.asBukkitCopy(item);
+    }
+
+    public static NBTTagCompound c(String s, NBTTagCompound tag) {
+        if(tag != null && tag.hasKey(s)) {
+            tag.remove(s);
+            if(tag.isEmpty()) {
+                return null;
+            }
+        }
+        return tag;
     }
 
 
@@ -132,7 +142,7 @@ public class NBT {
 
     /**
      * @param objitem ItemStack
-     * @param key    String
+     * @param key     String
      * @return boolean
      */
     public static boolean getBooleanTag(ItemStack objitem, String key) {
@@ -240,7 +250,7 @@ public class NBT {
     public static Map<String, String> getAllStringTag(ItemStack objitem) {
         net.minecraft.server.v1_12_R1.ItemStack item = CraftItemStack.asNMSCopy(objitem);
         NBTTagCompound ntc = item.hasTag() ? item.getTag() : new NBTTagCompound();
-        if(ntc.c().size() == 0) {
+        if (ntc.c().size() == 0) {
             return null;
         }
         Map<String, String> tags = new HashMap<>();
@@ -414,7 +424,7 @@ public class NBT {
         String[] sitems = sitem.split("(?<=\\G.{288})");
 
         for (int i = 0; i < sitems.length; i++) {
-            objitem = NBT.setStringTag(objitem, key+i, sitems[i]);
+            objitem = NBT.setStringTag(objitem, key + i, sitems[i]);
         }
         objitem = NBT.setIntTag(objitem, key + "_size", sitems.length);
         return objitem;
@@ -439,13 +449,13 @@ public class NBT {
 
     /**
      * @param objitem ItemStack
-     * @param inv Inventory
-     * @param key String
+     * @param inv     Inventory
+     * @param key     String
      * @return ItemStack
      */
     public static ItemStack setInventoryTag(ItemStack objitem, Inventory inv, String key) {
         for (int i = 0; i < inv.getSize(); i++) {
-            objitem = NBT.setItemStackTag(objitem, "inv_" + key + "_" + i+"_item", inv.getItem(i));
+            objitem = NBT.setItemStackTag(objitem, "inv_" + key + "_" + i + "_item", inv.getItem(i));
         }
         objitem = NBT.setIntTag(objitem, "inv_" + key + "_size", inv.getSize());
         return objitem;
@@ -453,14 +463,14 @@ public class NBT {
 
     /**
      * @param objitem ItemStack
-     * @param key String
+     * @param key     String
      * @return Inventory
      */
     @Nullable
     public static Inventory getInventoryTag(ItemStack objitem, String key) {
         Inventory inv = Bukkit.createInventory(null, NBT.getIntegerTag(objitem, "inv_" + key + "_size"));
         for (int i = 0; i < inv.getSize(); i++) {
-            inv.setItem(i, NBT.getItemStackTag(objitem, "inv_" + key + "_" + i+"_item"));
+            inv.setItem(i, NBT.getItemStackTag(objitem, "inv_" + key + "_" + i + "_item"));
         }
         return inv;
     }

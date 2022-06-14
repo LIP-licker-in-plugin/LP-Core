@@ -42,7 +42,7 @@ public class NBT {
         net.minecraft.server.v1_12_R1.ItemStack item = CraftItemStack.asNMSCopy(objitem);
         NBTTagCompound ntc = item.hasTag() ? item.getTag() : new NBTTagCompound();
         item.setTag(ntc);
-        item.c(key);
+        item.e(key);
         return CraftItemStack.asBukkitCopy(item);
     }
 
@@ -52,7 +52,7 @@ public class NBT {
         net.minecraft.server.v1_12_R1.ItemStack item = CraftItemStack.asNMSCopy(objitem);
         NBTTagCompound ntc = item.hasTag() ? item.getTag() : new NBTTagCompound();
         for (String key : ntc.c()) {
-            item.c(key);
+            item.e(key);
         }
         item.setTag(ntc);
         return CraftItemStack.asBukkitCopy(item);

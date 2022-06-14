@@ -14,7 +14,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'com.darksoldier1404.dppc'
             artifactId = 'DPP-Core'
-            version = '1.18.1-SNAPSHOT'
+            version = '1.18.2-SNAPSHOT'
             artifact '../jars/'+ jar.archiveName
         }
     }
@@ -37,7 +37,7 @@ build {
 }
 
 group 'github.com/darksoldier1404'
-version = '2.0.3.40'
+version = '2.0.3.41'
 
 repositories {
     mavenCentral()

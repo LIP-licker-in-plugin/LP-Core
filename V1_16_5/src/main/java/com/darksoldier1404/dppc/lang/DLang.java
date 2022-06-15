@@ -59,6 +59,9 @@ public class DLang {
     @Nullable
     public String get(String key) {
         String s = currentLang.getString(key);
+        if(s == null) {
+            return null;
+        }
         return ChatColor.translateAlternateColorCodes('&', s);
     }
 

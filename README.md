@@ -9,6 +9,7 @@
 ```
 ## 디펜던시 - Dependencies
 ```gradle
+compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.19-SNAPSHOT'
 compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.18.2-SNAPSHOT'
 compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.18.1-SNAPSHOT'
 compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.17.1-SNAPSHOT'
@@ -19,6 +20,7 @@ compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.13.2-SNAPSHOT'
 ```
 ## Spigot & CraftBukkit
 ```gradle
+compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.19'
 compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.18.2'
 compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.18.1'
 compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.18'
@@ -41,6 +43,7 @@ compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.13.2'
 compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.13.1'
 compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.13'
 
+compileOnly 'org.spigotmc:spigot-api:R0.1:1.19'
 compileOnly 'org.spigotmc:spigot-api:R0.1:1.18.2'
 compileOnly 'org.spigotmc:spigot-api:R0.1:1.18.1'
 compileOnly 'org.spigotmc:spigot-api:R0.1:1.18'

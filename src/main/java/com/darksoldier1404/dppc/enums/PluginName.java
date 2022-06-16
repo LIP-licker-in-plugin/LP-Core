@@ -26,6 +26,7 @@ public enum PluginName {
     RandomBox("DP-RandomBox", 15134),
     GiftBox("DP-GiftBox", 15135),
     BackPack("DP-BackPack", 15136),
+    BubbleChat("DP-BubbleChat", 15491),
     ;
 
     private final String name;

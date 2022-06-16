@@ -17,6 +17,7 @@ compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.16.5-SNAPSHOT'
 compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.15.2-SNAPSHOT'
 compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.14.4-SNAPSHOT'
 compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.13.2-SNAPSHOT'
+compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.12.2-SNAPSHOT'
 ```
 ## Spigot & CraftBukkit
 ```gradle
@@ -42,6 +43,7 @@ compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.14'
 compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.13.2'
 compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.13.1'
 compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.13'
+compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.12.2'
 
 compileOnly 'org.spigotmc:spigot-api:R0.1:1.19'
 compileOnly 'org.spigotmc:spigot-api:R0.1:1.18.2'
@@ -65,6 +67,7 @@ compileOnly 'org.spigotmc:spigot-api:R0.1:1.14'
 compileOnly 'org.spigotmc:spigot-api:R0.1:1.13.2'
 compileOnly 'org.spigotmc:spigot-api:R0.1:1.13.1'
 compileOnly 'org.spigotmc:spigot-api:R0.1:1.13'
+compileOnly 'org.spigotmc:spigot-api:R0.1:1.12.2'
 ```
 ## API
 ### ConfigUtils - Custom Config Utils

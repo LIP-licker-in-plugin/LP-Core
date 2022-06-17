@@ -1,4 +1,4 @@
-name: Gradle Build by.Bruce0203
+name: DPP-Core
 on:
   push:
 jobs:

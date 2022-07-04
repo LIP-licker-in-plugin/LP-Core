@@ -13,6 +13,7 @@ public class TwitchMessageEvent extends Event {
     private final ChannelMessageEvent event;
 
     public TwitchMessageEvent(ChannelMessageEvent e) {
+        super(true);
         this.event = e;
     }
 

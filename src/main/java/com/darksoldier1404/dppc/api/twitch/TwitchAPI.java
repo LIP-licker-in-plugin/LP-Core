@@ -4,6 +4,7 @@ import com.darksoldier1404.dppc.DPPCore;
 import com.github.philippheuer.events4j.simple.SimpleEventHandler;
 import com.github.twitch4j.TwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
+import com.github.twitch4j.chat.events.channel.ChannelMessageEvent;
 import com.github.twitch4j.common.events.domain.EventChannel;
 import com.github.twitch4j.events.ChannelGoLiveEvent;
 import com.github.twitch4j.helix.domain.Stream;
@@ -30,11 +31,14 @@ public class TwitchAPI {
         tc.getClientHelper().enableStreamEventListener(username);
     }
 
-    public static void registerEvents() {
+    private static void registerEvents() {
         tc.getEventManager().onEvent(ChannelGoLiveEvent.class, e -> {
             EventChannel ec = e.getChannel();
             Stream s = e.getStream();
             Bukkit.getServer().getPluginManager().callEvent(new TwitchLiveEvent(ec, s, e));
+        });
+        tc.getEventManager().onEvent(ChannelMessageEvent.class, e -> {
+            Bukkit.getServer().getPluginManager().callEvent(new TwitchMessageEvent(e));
         });
     }
 }

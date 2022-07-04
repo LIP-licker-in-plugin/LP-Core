@@ -26,3 +26,6 @@ Settings:
   twitch-api-key: ""
   twitch-api-secret: ""
   # 키, 시크릿 생성 : https://dev.twitch.tv/console/extensions/create
+  twitch-chatbot-clientID: ""
+  twitch-chatbot-accessToken: ""
+  # 아이디, 토큰 생성 : https://twitchtokengenerator.com/

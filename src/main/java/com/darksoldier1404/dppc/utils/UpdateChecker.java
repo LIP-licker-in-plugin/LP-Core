@@ -20,9 +20,9 @@ public class UpdateChecker {
     private static final Logger log = core.getLogger();
 
     public static void check(JavaPlugin plugin) {
+        Bukkit.getScheduler().runTaskAsynchronously(core, () -> {
         String currentVersion = plugin.getDescription().getVersion();
         String pluginName = plugin.getDescription().getName();
-        Bukkit.getScheduler().runTask(core, () -> {
             try {
                 HttpURLConnection connection = (HttpURLConnection) new URL("https://raw.githubusercontent.com/darksoldier1404/" + pluginName + "/master/src/main/resources/plugin.yml").openConnection();
                 connection.connect();
@@ -44,9 +44,9 @@ public class UpdateChecker {
     }
 
     public static void check(JavaPlugin plugin, Player p) {
+        Bukkit.getScheduler().runTaskAsynchronously(core, () -> {
         String currentVersion = plugin.getDescription().getVersion();
         String pluginName = plugin.getDescription().getName();
-        Bukkit.getScheduler().runTask(core, () -> {
             try {
                 HttpURLConnection connection = (HttpURLConnection) new URL("https://raw.githubusercontent.com/darksoldier1404/" + pluginName + "/master/src/main/resources/plugin.yml").openConnection();
                 connection.connect();

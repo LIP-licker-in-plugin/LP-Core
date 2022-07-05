@@ -20,15 +20,15 @@ public class UpdateChecker {
     private static final Logger log = core.getLogger();
 
     public static void check(JavaPlugin plugin) {
+        Bukkit.getScheduler().runTaskAsynchronously(core, () -> {
         String currentVersion = plugin.getDescription().getVersion();
         String pluginName = plugin.getDescription().getName();
-        Bukkit.getScheduler().runTask(core, () -> {
             try {
                 HttpURLConnection connection = (HttpURLConnection) new URL("https://raw.githubusercontent.com/darksoldier1404/" + pluginName + "/master/src/main/resources/plugin.yml").openConnection();
                 connection.connect();
                 String rr = new BufferedReader(new InputStreamReader(connection.getInputStream())).lines().collect(Collectors.toList()).get(1).split(" ")[1];
                 if (!currentVersion.equals(rr)) {
-                    log.info(prefix + pluginName + " : A new version of "+pluginName+" is available! " + rr);
+                    log.info(prefix + pluginName + " : A new version of " + pluginName + " is available! " + rr);
                     log.info(prefix + pluginName + " : This plugin's version is " + currentVersion);
                     log.info(prefix + pluginName + " : 최신 버전이 존재합니다! " + rr);
                     log.info(prefix + pluginName + " : 이 플러그인의 버전은 " + currentVersion + " 입니다. 업데이트를 해주시기 바랍니다.");
@@ -44,9 +44,9 @@ public class UpdateChecker {
     }
 
     public static void check(JavaPlugin plugin, Player p) {
+        Bukkit.getScheduler().runTaskAsynchronously(core, () -> {
         String currentVersion = plugin.getDescription().getVersion();
         String pluginName = plugin.getDescription().getName();
-        Bukkit.getScheduler().runTask(core, () -> {
             try {
                 HttpURLConnection connection = (HttpURLConnection) new URL("https://raw.githubusercontent.com/darksoldier1404/" + pluginName + "/master/src/main/resources/plugin.yml").openConnection();
                 connection.connect();

@@ -93,7 +93,7 @@ build {
 }
 
 group 'github.com/darksoldier1404'
-version = '2.0.4.47'
+version = '2.0.4.48'
 
 repositories {
     mavenCentral()

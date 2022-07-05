@@ -21,3 +21,14 @@ Settings:
 #    - DP-VirtualStorage
 
   default-lang: ko_KR
+
+  twitch-api-key: ""
+  twitch-api-secret: ""
+  # 키, 시크릿 생성 : https://dev.twitch.tv/console/extensions/create
+  twitch-chatbot-clientID: ""
+  twitch-chatbot-accessToken: ""
+  # 아이디, 토큰 생성 : https://twitchtokengenerator.com/
+
+  # 후원 관련 API 설정 - 1개만 설정해도 무관합니다 (제한적 사용)
+  twipKey: ""
+  toonationKey: ""

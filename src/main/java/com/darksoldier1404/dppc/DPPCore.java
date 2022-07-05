@@ -1,6 +1,7 @@
 package com.darksoldier1404.dppc;
 
 import com.darksoldier1404.dppc.api.placeholder.DPHManager;
+import com.darksoldier1404.dppc.api.twitch.DonationAPI;
 import com.darksoldier1404.dppc.api.twitch.TwitchAPI;
 import com.darksoldier1404.dppc.commands.DUCCommand;
 import com.darksoldier1404.dppc.enums.PluginName;
@@ -45,6 +46,7 @@ public class DPPCore extends JavaPlugin {
         dphm = new DPHManager();
         PluginUtil.loadALLPlugins();
         TwitchAPI.init();
+        DonationAPI.init();
         Plugin pl = getServer().getPluginManager().getPlugin("Essentials");
         if (pl == null) {
             getLogger().warning("Essentials 플러그인이 설치되어있지 않습니다.");

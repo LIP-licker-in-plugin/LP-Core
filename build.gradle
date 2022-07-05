@@ -56,7 +56,11 @@ shadowJar {
         include(dependency('commons-logging:commons-logging::1.1.1'))
         include(dependency('com.github.ben-manes.caffeine:caffeine::2.9.3'))
         include(dependency('io.reactivex:rxjava::1.2.0'))
-
+        include(dependency('com.github.outstanding1301:donation-alert-api::1.0.0'))
+        include(dependency('io.socket:socket.io-client::1.0.0'))
+        include(dependency('io.reactivex.rxjava2:rxjava::2.1.16'))
+        include(dependency('org.jsoup:jsoup::1.13.1'))
+        include(dependency('com.googlecode.json-simple:json-simple::1.1.1'))
 
     }
     destinationDirectory.set(file("$rootDir/jars"))
@@ -78,7 +82,7 @@ publishing {
     }
 }
 group 'github.com/darksoldier1404'
-version = '2.0.3.46'
+version = '2.0.4.47'
 
 
 compileJava.options.encoding = 'UTF-8'
@@ -136,6 +140,7 @@ repositories {
     maven {
         url "https://org.bstats/bstats-bukkit"
     }
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -155,6 +160,11 @@ dependencies {
     implementation 'com.github.philippheuer.events4j:events4j-core:0.10.0'
     implementation 'com.github.philippheuer.events4j:events4j-handler-simple:0.10.0'
     implementation 'com.github.vladimir-bukhtoyarov:bucket4j:7.5.0'
+    implementation 'com.github.outstanding1301:donation-alert-api:1.0.0'
+    implementation 'io.socket:socket.io-client:1.0.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.16'
+    implementation 'org.jsoup:jsoup:1.13.1'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 }
 test {
     useJUnitPlatform()

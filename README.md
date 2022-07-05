@@ -1,6 +1,6 @@
 ![](https://bstats.org/signatures/bukkit/DP-UniversalCore.svg)
 [![Gradle Build by.Bruce0203](https://github.com/darksoldier1404/DPP-Core/actions/workflows/gradle.yml/badge.svg?branch=master)](https://github.com/darksoldier1404/DPP-Core/actions/workflows/gradle.yml)
-# DPP-Core
+# DPP-Core (old name - DP-UniversalCore)
 
 ## 리포지토리 - Repository
 ```gradle

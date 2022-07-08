@@ -14,6 +14,7 @@ public class TwitchLiveEvent extends Event {
     private final ChannelGoLiveEvent event;
 
     public TwitchLiveEvent(EventChannel ec, Stream s, ChannelGoLiveEvent e) {
+        super(true);
         this.channel = ec;
         this.stream = s;
         this.event = e;

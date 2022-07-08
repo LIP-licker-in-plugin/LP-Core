@@ -28,7 +28,6 @@ public enum PluginName {
     BackPack("DP-BackPack", 15136),
     BubbleChat("DP-BubbleChat", 15491),
     ;
-
     private final String name;
     private final int pluginID;
 

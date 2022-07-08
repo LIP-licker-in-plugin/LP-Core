@@ -6,7 +6,9 @@ import com.github.philippheuer.events4j.simple.SimpleEventHandler;
 import com.github.twitch4j.TwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
 import com.github.twitch4j.chat.events.channel.ChannelMessageEvent;
+import com.github.twitch4j.chat.events.channel.DonationEvent;
 import com.github.twitch4j.events.ChannelGoLiveEvent;
+import com.github.twitch4j.helix.domain.StreamList;
 import org.bukkit.Bukkit;
 
 @SuppressWarnings("unused")
@@ -48,9 +50,14 @@ public class TwitchAPI {
     private static void registerEvents() {
         tc.getEventManager().onEvent(ChannelGoLiveEvent.class, e -> Bukkit.getServer().getPluginManager().callEvent(new TwitchLiveEvent(e.getChannel(), e.getStream(), e)));
         tc.getEventManager().onEvent(ChannelMessageEvent.class, e -> Bukkit.getServer().getPluginManager().callEvent(new TwitchMessageEvent(e)));
+        tc.getEventManager().onEvent(DonationEvent.class, e -> System.out.println(e.getChannel() + " | " + e.getSource() + " | " + e.getAmount() + " | " + e.getMessage()));
     }
 
     public static TwitchClient getTwitchClient() {
         return tc;
+    }
+
+    public static void test() {
+
     }
 }

@@ -6,6 +6,7 @@ import com.github.philippheuer.events4j.simple.SimpleEventHandler;
 import com.github.twitch4j.TwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
 import com.github.twitch4j.chat.events.channel.ChannelMessageEvent;
+import com.github.twitch4j.chat.events.channel.DonationEvent;
 import com.github.twitch4j.events.ChannelGoLiveEvent;
 import org.bukkit.Bukkit;
 
@@ -32,8 +33,8 @@ public class TwitchAPI {
         }
         tc = TwitchClientBuilder.builder()
                 .withEnableHelix(true)
-                .withClientId(plugin.config.getString("Settings.twitch-api-key"))
-                .withClientSecret(plugin.config.getString("Settings.twitch-api-secret"))
+                .withClientId(key)
+                .withClientSecret(secret)
                 .withDefaultEventHandler(SimpleEventHandler.class)
                 .withEnableChat(true)
                 .withChatAccount(new OAuth2Credential(cbid, cbtoken))
@@ -48,6 +49,7 @@ public class TwitchAPI {
     private static void registerEvents() {
         tc.getEventManager().onEvent(ChannelGoLiveEvent.class, e -> Bukkit.getServer().getPluginManager().callEvent(new TwitchLiveEvent(e.getChannel(), e.getStream(), e)));
         tc.getEventManager().onEvent(ChannelMessageEvent.class, e -> Bukkit.getServer().getPluginManager().callEvent(new TwitchMessageEvent(e)));
+        tc.getEventManager().onEvent(DonationEvent.class, e -> Bukkit.getServer().getPluginManager().callEvent(new TwitchDonationEvent(e)));
     }
 
     public static TwitchClient getTwitchClient() {

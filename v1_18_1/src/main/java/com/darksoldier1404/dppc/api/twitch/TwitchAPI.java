@@ -8,6 +8,7 @@ import com.github.twitch4j.TwitchClientBuilder;
 import com.github.twitch4j.chat.events.channel.ChannelMessageEvent;
 import com.github.twitch4j.chat.events.channel.DonationEvent;
 import com.github.twitch4j.events.ChannelGoLiveEvent;
+import com.github.twitch4j.events.ChannelGoOfflineEvent;
 import org.bukkit.Bukkit;
 
 @SuppressWarnings("unused")
@@ -50,6 +51,7 @@ public class TwitchAPI {
         tc.getEventManager().onEvent(ChannelGoLiveEvent.class, e -> Bukkit.getServer().getPluginManager().callEvent(new TwitchLiveEvent(e.getChannel(), e.getStream(), e)));
         tc.getEventManager().onEvent(ChannelMessageEvent.class, e -> Bukkit.getServer().getPluginManager().callEvent(new TwitchMessageEvent(e)));
         tc.getEventManager().onEvent(DonationEvent.class, e -> Bukkit.getServer().getPluginManager().callEvent(new TwitchDonationEvent(e)));
+        tc.getEventManager().onEvent(ChannelGoOfflineEvent.class, e -> Bukkit.getServer().getPluginManager().callEvent(new TwitchOfflineEvent(e.getChannel())));
     }
 
     public static TwitchClient getTwitchClient() {

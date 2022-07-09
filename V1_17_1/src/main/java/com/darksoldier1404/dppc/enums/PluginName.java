@@ -27,6 +27,8 @@ public enum PluginName {
     GiftBox("DP-GiftBox", 15135),
     BackPack("DP-BackPack", 15136),
     BubbleChat("DP-BubbleChat", 15491),
+    LegendaryEnderChest("DP-LegendaryEnderChest", 15714),
+    BroadcastStream("DP-BroadcastStream", 15715),
     ;
 
     private final String name;

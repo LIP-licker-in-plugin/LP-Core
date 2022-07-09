@@ -1,19 +1,16 @@
 package com.darksoldier1404.dppc;
 
 import com.darksoldier1404.dppc.api.placeholder.DPHManager;
+import com.darksoldier1404.dppc.api.twitch.DonationAPI;
+import com.darksoldier1404.dppc.api.twitch.TwitchAPI;
 import com.darksoldier1404.dppc.commands.DUCCommand;
 import com.darksoldier1404.dppc.enums.PluginName;
 import com.darksoldier1404.dppc.utils.ConfigUtils;
 import com.darksoldier1404.dppc.utils.PluginUtil;
 import com.darksoldier1404.dppc.utils.SchedulerUtils;
 import com.earth2me.essentials.Essentials;
-import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,6 +27,7 @@ public class DPPCore extends JavaPlugin {
     public final Map<PluginName, JavaPlugin> enabledPlugins = new HashMap<>();
     public DPHManager dphm;
     public Essentials ess;
+    public TwitchAPI tapi;
 
     public static DPPCore getInstance() {
         return plugin;
@@ -47,6 +45,8 @@ public class DPPCore extends JavaPlugin {
         config = ConfigUtils.loadDefaultPluginConfig(plugin);
         dphm = new DPHManager();
         PluginUtil.loadALLPlugins();
+        TwitchAPI.init();
+        DonationAPI.init();
         Plugin pl = getServer().getPluginManager().getPlugin("Essentials");
         if (pl == null) {
             getLogger().warning("Essentials 플러그인이 설치되어있지 않습니다.");

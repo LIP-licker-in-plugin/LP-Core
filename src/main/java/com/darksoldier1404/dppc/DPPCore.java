@@ -1,5 +1,6 @@
 package com.darksoldier1404.dppc;
 
+import com.darksoldier1404.dppc.api.discord.DiscordAPI;
 import com.darksoldier1404.dppc.api.placeholder.DPHManager;
 import com.darksoldier1404.dppc.api.twitch.TwitchAPI;
 import com.darksoldier1404.dppc.commands.DUCCommand;
@@ -47,7 +48,12 @@ public class DPPCore extends JavaPlugin {
         if (config.getBoolean("Settings.use-twitch-api")) {
             TwitchAPI.init();
         }else{
-            log.warning(prefix + "TwitchAPI를 사용이 비활성화 되어있습니다.");
+            log.warning(prefix + "TwitchAPI 사용이 비활성화 되어있습니다.");
+        }
+        if (config.getBoolean("Settings.use-discord-api")) {
+            DiscordAPI.init();
+        }else{
+            log.warning(prefix + "DiscordAPI 사용이 비활성화 되어있습니다.");
         }
         Plugin pl = getServer().getPluginManager().getPlugin("Essentials");
         if (pl == null) {

@@ -17,30 +17,35 @@ public class TwitchAPI {
     private static TwitchClient tc;
 
     public static void init() {
-        String key, secret, cbid, cbtoken;
-        key = plugin.config.getString("Settings.twitch-api-key");
-        secret = plugin.config.getString("Settings.twitch-api-secret");
-        cbid = plugin.config.getString("Settings.twitch-chatbot-clientID");
-        cbtoken = plugin.config.getString("Settings.twitch-chatbot-accessToken");
-        if (key == null || secret == null) { // for the application
-            plugin.log.warning("Twitch API Key 또는 Secret이 설정되지 않았습니다.");
+        try{
+            String key, secret, cbid, cbtoken;
+            key = plugin.config.getString("Settings.twitch-api-key");
+            secret = plugin.config.getString("Settings.twitch-api-secret");
+            cbid = plugin.config.getString("Settings.twitch-chatbot-clientID");
+            cbtoken = plugin.config.getString("Settings.twitch-chatbot-accessToken");
+            if (key == null || secret == null) { // for the application
+                plugin.log.warning("Twitch API Key 또는 Secret이 설정되지 않았습니다.");
+                plugin.log.warning("Twitch API 사용 불가.");
+                return;
+            }
+            if (cbid == null || cbtoken == null) { // for the chatbot
+                plugin.log.warning("Twitch Chatbot ClientID 또는 AccessToken이 설정되지 않았습니다.");
+                plugin.log.warning("Twitch API 사용 불가.");
+                return;
+            }
+            tc = TwitchClientBuilder.builder()
+                    .withEnableHelix(true)
+                    .withClientId(key)
+                    .withClientSecret(secret)
+                    .withDefaultEventHandler(SimpleEventHandler.class)
+                    .withEnableChat(true)
+                    .withChatAccount(new OAuth2Credential(cbid, cbtoken))
+                    .build();
+            registerEvents();
+        }catch (Exception e){
+            plugin.log.warning("Twitch API Key, Secret, ClientID, AccessToken중에 무언가가 잘못되었습니다.");
             plugin.log.warning("Twitch API 사용 불가.");
-            return;
         }
-        if (cbid == null || cbtoken == null) { // for the chatbot
-            plugin.log.warning("Twitch Chatbot ClientID 또는 AccessToken이 설정되지 않았습니다.");
-            plugin.log.warning("Twitch API 사용 불가.");
-            return;
-        }
-        tc = TwitchClientBuilder.builder()
-                .withEnableHelix(true)
-                .withClientId(key)
-                .withClientSecret(secret)
-                .withDefaultEventHandler(SimpleEventHandler.class)
-                .withEnableChat(true)
-                .withChatAccount(new OAuth2Credential(cbid, cbtoken))
-                .build();
-        registerEvents();
     }
 
     public static void enableStreamTracking(String username) {

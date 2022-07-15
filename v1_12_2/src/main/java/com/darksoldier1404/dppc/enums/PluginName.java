@@ -29,6 +29,7 @@ public enum PluginName {
     BubbleChat("DP-BubbleChat", 15491),
     LegendaryEnderChest("DP-LegendaryEnderChest", 15714),
     BroadcastStream("DP-BroadcastStream", 15715),
+    Menu("DP-Menu", 15781),
     ;
 
     private final String name;

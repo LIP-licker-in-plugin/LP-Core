@@ -44,9 +44,9 @@ public class DPPCore extends JavaPlugin {
         config = ConfigUtils.loadDefaultPluginConfig(plugin);
         dphm = new DPHManager();
         PluginUtil.loadALLPlugins();
-        if (config.getBoolean("Settings.use-twitch-api")) {
+        if (config.getBoolean("Settings.use-twitch-api") == true) {
             TwitchAPI.init();
-        }else{
+        }else if (config.getBoolean("Settings.use-twitch-api") == false) {
             log.warning(prefix + "TwitchAPI를 사용이 비활성화 되어있습니다.");
         }
         Plugin pl = getServer().getPluginManager().getPlugin("Essentials");

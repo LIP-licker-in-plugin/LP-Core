@@ -64,6 +64,7 @@ shadowJar {
         include(dependency('io.socket:engine.io-client::1.0.0'))
         include(dependency('io.socket:socket.io-client::1.0.0'))
         include(dependency('org.json:json::20090211'))
+        include(dependency('net.dv8tion:JDA::5.0.0-DP-alpha.13'))
     }
     destinationDirectory.set(file("$rootDir/jars"))
 }
@@ -167,6 +168,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.1.16'
     implementation 'org.jsoup:jsoup:1.13.1'
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    implementation 'net.dv8tion:JDA:5.0.0-DP-alpha.13'
 }
 test {
     useJUnitPlatform()

@@ -20,7 +20,7 @@ Settings:
 #  use-metrics-excluded:
 #    - DP-VirtualStorage
 
-  use-twitch-api: true
+  use-twitch-api: false
   twitch-api-key: ""
   twitch-api-secret: ""
   # 키, 시크릿 생성 : https://dev.twitch.tv/console/extensions/create

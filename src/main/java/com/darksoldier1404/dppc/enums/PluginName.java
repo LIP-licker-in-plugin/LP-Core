@@ -30,6 +30,8 @@ public enum PluginName {
     LegendaryEnderChest("DP-LegendaryEnderChest", 15714),
     BroadcastStream("DP-BroadcastStream", 15715),
     Menu("DP-Menu", 15781),
+    MultiCommand("DP-MultiCommand", 15934),
+    LegendaryCollection("DP-LegendaryCollection", 15935),
     ;
     private final String name;
     private final int pluginID;

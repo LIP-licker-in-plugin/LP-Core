@@ -31,5 +31,5 @@ Settings:
   # 아이디, 토큰 생성 : https://twitchtokengenerator.com/
 
   # DISCORD API
-  use-discord-api: true
+  use-discord-api: false
   discord-bot-token: ""

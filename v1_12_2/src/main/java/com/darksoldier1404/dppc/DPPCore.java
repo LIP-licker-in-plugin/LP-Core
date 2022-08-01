@@ -8,6 +8,7 @@ import com.darksoldier1404.dppc.utils.ConfigUtils;
 import com.darksoldier1404.dppc.utils.PluginUtil;
 import com.darksoldier1404.dppc.utils.SchedulerUtils;
 import com.earth2me.essentials.Essentials;
+import net.md_5.bungee.api.chat.ClickEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;

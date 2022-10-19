@@ -2,7 +2,6 @@ package com.darksoldier1404.dppc.api.inventory;
 
 
 import com.darksoldier1404.dppc.utils.NBT;
-import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_13_R2.inventory.CraftInventoryCustom;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
@@ -17,6 +16,7 @@ public class DInventory extends CraftInventoryCustom {
     private final String handlerName;
     private final UUID uuid;
     private boolean usePage;
+    private boolean usePageTools;
     private int pages = 0;
     private int currentPage = 0;
     private ItemStack[] pageTools = new ItemStack[8];
@@ -34,6 +34,7 @@ public class DInventory extends CraftInventoryCustom {
         super(holder, size, title);
         this.handlerName = plugin.getName();
         this.usePage = usePage;
+        usePageTools = true;
         uuid = UUID.randomUUID();
     }
 
@@ -61,6 +62,10 @@ public class DInventory extends CraftInventoryCustom {
         return usePage;
     }
 
+    public boolean isUsePageTools() {
+        return usePageTools;
+    }
+
     public int getPages() {
         return pages;
     }
@@ -79,6 +84,11 @@ public class DInventory extends CraftInventoryCustom {
 
     public void setUsePage(boolean usePage) {
         this.usePage = usePage;
+        usePageTools = true;
+    }
+
+    public void setUsePageTools(boolean usePageTools) {
+        this.usePageTools = usePageTools;
     }
 
     public void setPages(int pages) {
@@ -127,12 +137,14 @@ public class DInventory extends CraftInventoryCustom {
                 setItem(i, pageItems.get(currentPage)[i]);
             }
         }
-        int pt = 0;
-        for (int i = getSize() - 9; i < getSize(); i++) {
-            if (pageTools[pt] != null) {
-                setItem(i, NBT.setStringTag(pageTools[pt], "pageTools", "true"));
+        if (usePageTools) {
+            int pt = 0;
+            for (int i = getSize() - 9; i < getSize(); i++) {
+                if (pageTools[pt] != null) {
+                    setItem(i, NBT.setStringTag(pageTools[pt], "pageTools", "true"));
+                }
+                pt++;
             }
-            pt++;
         }
     }
 

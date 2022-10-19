@@ -47,12 +47,12 @@ public class DPPCore extends JavaPlugin {
         PluginUtil.loadALLPlugins();
         if (config.getBoolean("Settings.use-twitch-api")) {
             TwitchAPI.init();
-        }else{
+        } else {
             log.warning(prefix + "TwitchAPI 사용이 비활성화 되어있습니다.");
         }
         if (config.getBoolean("Settings.use-discord-api")) {
             DiscordAPI.init();
-        }else{
+        } else {
             log.warning(prefix + "DiscordAPI 사용이 비활성화 되어있습니다.");
         }
         Plugin pl = getServer().getPluginManager().getPlugin("Essentials");

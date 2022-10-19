@@ -94,7 +94,7 @@ build {
 }
 
 group 'github.com/darksoldier1404'
-version = '2.0.5.54'
+version = '2.0.5.55'
 
 repositories {
     mavenCentral()
@@ -115,7 +115,6 @@ dependencies {
     compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.12.2'
     compileOnly 'org.spigotmc:spigot-api:R0.1:1.12.2'
     compileOnly 'org.bstats:bstats-bukkit:3.0.0'
-    compileOnly 'com.darksoldier1404.dvs:DP-VirtualStorage:1.0.0.41'
     compileOnly 'com.earth2me.essentials:EssentialsX:2.19.3'
     implementation group: 'com.github.twitch4j', name: 'twitch4j', version: '1.10.0'
     implementation 'com.github.philippheuer.events4j:events4j-api:0.10.0'

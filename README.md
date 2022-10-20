@@ -172,6 +172,51 @@ inv.addPageContent(/*ItemStack[]*/);
 inv.update();
 Player#openInventory(inv);
 ```
+```java
+@EventHandler
+public void onInventoryClick(InventoryClickEvent e) {
+    if (e.getClickedInventory() instanceof DInventory) {
+        DInventory inv = (DInventory) e.getClickedInventory();
+        if (NBT.hasTagKey(e.getCurrentItem(), "prev")) {
+            e.setCancelled(true);
+            inv.prevPage();
+            return;
+        }
+        if (NBT.hasTagKey(e.getCurrentItem(), "next")) {
+            e.setCancelled(true);
+            inv.nextPage();
+            return;
+        }
+    }
+}
+```
+#### but at 1.12.2 mc version need to use custom inventory holder like
+```java
+public static Map<UUID, DInventory> currentInv = new HashMap<>(); // <---
+
+public static void openInv(Player p){
+    DInventory inv = new DInventory(null, "DInventory Test", 54, true, plugin);
+    p.openInventory(inv);
+    currentInv.put(p.getUniqueId(), inv); // <---
+}
+
+@EventHandler
+public void onInventoryClick(InventoryClickEvent e) {
+    if (currentInv.containsKey(e.getWhoClicked().getUniqueId())) { // <---
+        DInventory inv = (DInventory) e.getClickedInventory(); // <---
+        if (NBT.hasTagKey(e.getCurrentItem(), "prev")) {
+            e.setCancelled(true);
+            inv.prevPage();
+            return;
+        }
+        if (NBT.hasTagKey(e.getCurrentItem(), "next")) {
+            e.setCancelled(true);
+            inv.nextPage();
+            return;
+        }
+    }
+}
+```
 ### InventoryUtils - Simple Inventory Utility
 ```java
 Player p = Bukkit.getPlayer("DEAD_POOLIO_");

@@ -16,14 +16,28 @@ public class DataContainer {
     private DLang lang;
     private String prefix;
     private final Map<String, Object> data = new HashMap<>();
+    private boolean useDLang = false;
 
     public DataContainer(JavaPlugin plugin) {
         this.plugin = plugin;
         this.config = ConfigUtils.loadDefaultPluginConfig(plugin);
         this.prefix = ColorUtils.applyColor(config.getString("Settings.prefix"));
         this.lang = new DLang(config.getString("Settings.Lang") == null ? "Korean" : config.getString("Settings.Lang"), plugin);
-        if(config.getString("Settings.Lang") == null) {
+        if (config.getString("Settings.Lang") == null) {
             config.set("Settings.Lang", "Korean");
+        }
+    }
+
+    public DataContainer(JavaPlugin plugin, boolean useDLang) {
+        this.plugin = plugin;
+        this.config = ConfigUtils.loadDefaultPluginConfig(plugin);
+        this.prefix = ColorUtils.applyColor(config.getString("Settings.prefix"));
+        this.useDLang = useDLang;
+        if (this.useDLang) {
+            this.lang = new DLang(config.getString("Settings.Lang") == null ? "Korean" : config.getString("Settings.Lang"), plugin);
+            if (config.getString("Settings.Lang") == null) {
+                config.set("Settings.Lang", "Korean");
+            }
         }
     }
 
@@ -47,22 +61,22 @@ public class DataContainer {
         return lang;
     }
 
-        public void setLang(DLang lang) {
+    public void setLang(DLang lang) {
         this.lang = lang;
     }
-    
+
     public void initUserData(UUID uuid) {
-        if(!hasUserData(uuid)) {
-            YamlConfiguration data = ConfigUtils.loadCustomData(plugin, uuid+".yml", "udata");
+        if (!hasUserData(uuid)) {
+            YamlConfiguration data = ConfigUtils.loadCustomData(plugin, uuid + ".yml", "udata");
             addUserData(uuid, data);
         }
     }
 
     public void addUserData(UUID uuid, YamlConfiguration data) {
-        if(this.data.containsKey("udata")) {
+        if (this.data.containsKey("udata")) {
             Map<UUID, YamlConfiguration> udata = (Map<UUID, YamlConfiguration>) this.data.get("udata");
             udata.put(uuid, data);
-        }else{
+        } else {
             Map<UUID, YamlConfiguration> udata = new HashMap<>();
             udata.put(uuid, data);
             this.data.put("udata", udata);
@@ -70,7 +84,7 @@ public class DataContainer {
     }
 
     public void removeUserData(UUID uuid) {
-        if(this.data.containsKey("udata")) {
+        if (this.data.containsKey("udata")) {
             Map<UUID, YamlConfiguration> udata = (Map<UUID, YamlConfiguration>) this.data.get("udata");
             udata.remove(uuid);
         }
@@ -78,7 +92,7 @@ public class DataContainer {
 
     @Nullable
     public YamlConfiguration getUserData(UUID uuid) {
-        if(this.data.containsKey("udata")) {
+        if (this.data.containsKey("udata")) {
             Map<UUID, YamlConfiguration> udata = (Map<UUID, YamlConfiguration>) this.data.get("udata");
             return udata.get(uuid);
         }
@@ -86,7 +100,7 @@ public class DataContainer {
     }
 
     public boolean hasUserData(UUID uuid) {
-        if(this.data.containsKey("udata")) {
+        if (this.data.containsKey("udata")) {
             Map<UUID, YamlConfiguration> udata = (Map<UUID, YamlConfiguration>) this.data.get("udata");
             return udata.containsKey(uuid);
         }
@@ -94,23 +108,23 @@ public class DataContainer {
     }
 
     public void clearUserData() {
-        if(this.data.containsKey("udata")) {
+        if (this.data.containsKey("udata")) {
             Map<UUID, YamlConfiguration> udata = (Map<UUID, YamlConfiguration>) this.data.get("udata");
             udata.clear();
         }
     }
 
     public void saveUserData(UUID uuid) {
-        if(this.data.containsKey("udata")) {
+        if (this.data.containsKey("udata")) {
             Map<UUID, YamlConfiguration> udata = (Map<UUID, YamlConfiguration>) this.data.get("udata");
-            ConfigUtils.saveCustomData(plugin, udata.get(uuid), uuid+".yml", "udata");
+            ConfigUtils.saveCustomData(plugin, udata.get(uuid), uuid + ".yml", "udata");
         }
     }
 
     public void saveAndLeave(UUID uuid) {
-        if(this.data.containsKey("udata")) {
+        if (this.data.containsKey("udata")) {
             Map<UUID, YamlConfiguration> udata = (Map<UUID, YamlConfiguration>) this.data.get("udata");
-            ConfigUtils.saveCustomData(plugin, udata.get(uuid), uuid+".yml", "udata");
+            ConfigUtils.saveCustomData(plugin, udata.get(uuid), uuid + ".yml", "udata");
             udata.remove(uuid);
         }
     }
@@ -126,9 +140,11 @@ public class DataContainer {
     public void reload() {
         config = ConfigUtils.reloadPluginConfig(plugin, config);
         prefix = ColorUtils.applyColor(config.getString("Settings.prefix"));
-        lang = new DLang(config.getString("Settings.Lang") == null ? "Korean" : config.getString("Settings.Lang"), plugin);
-        if(config.getString("Settings.Lang") == null) {
-            config.set("Settings.Lang", "Korean");
+        if (useDLang) {
+            lang = new DLang(config.getString("Settings.Lang") == null ? "Korean" : config.getString("Settings.Lang"), plugin);
+            if (config.getString("Settings.Lang") == null) {
+                config.set("Settings.Lang", "Korean");
+            }
         }
     }
 

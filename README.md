@@ -254,7 +254,7 @@ public void test() {
     // Test Text: Test
 }
 ```
-#### BentaAPI - 문화상품권, 계좌이체(프리미엄) 결제 활용
+### BentaAPI - 문화상품권, 계좌이체(프리미엄) 결제 활용
 ```java
 BentaAPI bapi = new BentaAPI("벤타 어플리케이션 토큰", plugin, "벤타 결제시 표시될 타이틀", prefix); // Init
 bapi.sendPaymentURL(player, plugin); // 플레이어에게 결제 페이지 링크 전송

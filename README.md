@@ -254,6 +254,47 @@ public void test() {
     // Test Text: Test
 }
 ```
+#### BentaAPI - 문화상품권, 계좌이체(프리미엄) 결제 활용
+```java
+BentaAPI bapi = new BentaAPI("벤타 어플리케이션 토큰", plugin, "벤타 결제시 표시될 타이틀", prefix); // Init
+bapi.sendPaymentURL(player, plugin); // 플레이어에게 결제 페이지 링크 전송
+
+// 이벤트 활용
+    @EventHandler
+    public void onCultuerlandFail(EvtCulturelandFail e) {
+        OfflinePlayer op = Bukkit.getPlayer(UUID.fromString(e.getIdentifier()));
+        if(op != null) {
+            if(op.isOnline()) {
+                Player p = Bukkit.getPlayer(op.getUniqueId());
+                p.sendMessage(plugin.prefix + "§c컬처랜드 결제에 실패했습니다.");
+            }
+        }
+    }
+
+    @EventHandler
+    public void onCultuerlandSuccess(EvtCulturelandSuccess e) {
+        OfflinePlayer op = Bukkit.getPlayer(UUID.fromString(e.getIdentifier()));
+        if(op != null) {
+            if(op.isOnline()) {
+                Player p = Bukkit.getPlayer(op.getUniqueId());
+                p.sendMessage(plugin.prefix + "§a컬처랜드 결제에 성공했습니다.");
+                p.sendMessage(plugin.prefix + "§a금액 : " + e.getPaidAmount() + " 원");
+            }
+        }
+    }
+
+    @EventHandler
+    public void onDepositSuccess(EvtDepositSuccess e) {
+        OfflinePlayer op = Bukkit.getPlayer(UUID.fromString(e.getIdentifier()));
+        if(op != null) {
+            if(op.isOnline()) {
+                Player p = Bukkit.getPlayer(op.getUniqueId());
+                p.sendMessage(plugin.prefix + "§a입금에 성공했습니다.");
+                p.sendMessage(plugin.prefix + "§a금액 : " + e.getPaidAmount() + " 원");
+            }
+        }
+    }
+```
 #### English.yml in /lang/English.yml
 ```yaml
 Lang: English

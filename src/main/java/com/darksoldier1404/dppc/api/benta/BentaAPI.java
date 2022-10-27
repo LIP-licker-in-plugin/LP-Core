@@ -67,7 +67,7 @@ public class BentaAPI {
         plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin, new BentaScheduler(), 10 * 20, 20 * 5);
     }
 
-    public void sendPaymentURL(Player p, JavaPlugin plugin) {
+    public void sendPaymentURL(Player p) {
         Bukkit.getServer().getScheduler().runTaskAsynchronously(plugin, () -> {
             p.sendMessage(prefix + "결제 페이지를 생성 중입니다. 잠시만 기다려 주세요.");
             JSONObject response = generateBentaPayment("{ \"token\" : \"" + appKey + "\",  \"title\" : \"" + title + "\", \"identifier\" : \"" + p.getUniqueId() + "\" }");

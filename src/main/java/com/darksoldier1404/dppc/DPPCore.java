@@ -1,5 +1,6 @@
 package com.darksoldier1404.dppc;
 
+import com.darksoldier1404.dppc.api.benta.BentaAPI;
 import com.darksoldier1404.dppc.api.discord.DiscordAPI;
 import com.darksoldier1404.dppc.api.placeholder.DPHManager;
 import com.darksoldier1404.dppc.api.twitch.TwitchAPI;

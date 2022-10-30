@@ -157,6 +157,29 @@ public class DLogger {
         }
     }
 
+    public boolean log(Object value) {
+        if(mainLog != null) {
+            // use date like [2019-01-01_00:00:00] as key
+            String key = "[" + new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(new Date()) + "]";
+            if(mainLog.contains(key)) {
+                if (logLevel == 0 || logLevel == 3) {
+                    log.warning("메인 로그의 " + key + " 키에 이미 값이 존재합니다.");
+                }
+                return false;
+            }
+            mainLog.set(key, value);
+            if (logLevel == 2 || logLevel == 3) {
+                log.info("메인 로그의 " + key + " 키에 " + value + " 값을 추가했습니다.");
+            }
+            return true;
+        }else{
+            if(logLevel == 0 || logLevel == 3) {
+                log.warning("메인 로그가 존재하지 않습니다.");
+            }
+            return false;
+        }
+    }
+
     public void initAutoSave(long delay, long period, String logMapPath, String logMapName, String mainLogPath, String mainLogName, boolean withReset) {
         if(task != null) {
             if(logLevel == 0 || logLevel == 3) {

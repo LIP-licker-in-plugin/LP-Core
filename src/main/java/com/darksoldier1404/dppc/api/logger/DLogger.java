@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 @SuppressWarnings("unused")
 public class DLogger {
     private final Map<String, YamlConfiguration> logMap = new HashMap<>();
-    private YamlConfiguration mainLog = null;
+    private YamlConfiguration mainLog = new YamlConfiguration();
     private final JavaPlugin plugin;
     private final Logger log;
     private BukkitTask task;
@@ -35,7 +35,6 @@ public class DLogger {
         if(logLevel == 0 || logLevel == 3) {
             log.info("DLogger 활성화 - 로그 레벨: " + logLevel);
             log.info("DLogger 활성화 - 콘솔 로그 사용: " + useConsoleLog);
-            log.info("DLogger 활성화 - 메인 로그 사용: " + (mainLog != null));
         }
     }
 
@@ -46,7 +45,6 @@ public class DLogger {
         if(logLevel == 0 || logLevel == 3) {
             log.info("DLogger 활성화 - 로그 레벨: " + logLevel);
             log.info("DLogger 활성화 - 콘솔 로그 사용: " + useConsoleLog);
-            log.info("DLogger 활성화 - 메인 로그 사용: " + (mainLog != null));
         }
     }
 
@@ -60,24 +58,6 @@ public class DLogger {
             log.info("DLogger 활성화 - 콘솔 로그 사용: " + useConsoleLog);
             log.info("DLogger 활성화 - 메인 로그 사용: " + (mainLog != null));
         }
-    }
-
-    public boolean initMainLog(String name) {
-        if(mainLog != null) {
-            if(logLevel == 0 || logLevel == 3) {
-                log.warning("이미 메인 로그가 존재합니다.");
-            }
-            return false;
-        }else{
-            if(logMap.containsKey(name)) {
-                mainLog = logMap.get(name);
-                if(logLevel == 0 || logLevel == 3) {
-                    log.info("메인 로그를 " + name + " 으로 설정했습니다.");
-                }
-                return true;
-            }
-        }
-        return false;
     }
 
     public boolean addLog(String name) {
@@ -96,10 +76,10 @@ public class DLogger {
     }
 
     @Deprecated
-    public void unsetMainLog() {
+    public void resetMainLog() {
         mainLog = null;
         if(logLevel == 0 || logLevel == 3) {
-            log.info("메인 로그를 해제했습니다.");
+            log.info("메인 로그를 리셋 하였습니다.");
         }
     }
 
@@ -177,7 +157,7 @@ public class DLogger {
         }
     }
 
-    public void initAutoSave(long delay, long period, String logMapPath, String logMapName, String mainLogPath, String mainLogName) {
+    public void initAutoSave(long delay, long period, String logMapPath, String logMapName, String mainLogPath, String mainLogName, boolean withReset) {
         if(task != null) {
             if(logLevel == 0 || logLevel == 3) {
                 log.warning("이미 자동 저장이 활성화 되어 있습니다.");
@@ -192,12 +172,12 @@ public class DLogger {
                 }
                 if(logMapPath != null && logMapName != null) {
                     String date = new SimpleDateFormat("yy-MM-dd-HH-mm-ss").format(new Date());
-                    saveLogMapData(logMapPath, logMapName + "-" + date);
+                    saveLogMapData(logMapPath, logMapName + "-" + date, withReset);
                 }
                 if(mainLogPath != null && mainLogName != null) {
                     // get yy-mm-dd-hh-mm-ss
                     String date = new SimpleDateFormat("yy-MM-dd-HH-mm-ss").format(new Date());
-                    saveMainLogData(mainLogPath, mainLogName + "-" + date);
+                    saveMainLogData(mainLogPath, mainLogName + "-" + date, withReset);
                 }
                 if(logLevel == 0 || logLevel == 3) {
                     log.info("DLogger 자동 저장을 완료했습니다.");
@@ -223,10 +203,13 @@ public class DLogger {
         }
     }
 
-    public void saveMainLogData(String path, String fileName) {
+    public void saveMainLogData(String path, String fileName, boolean withReset) {
         if(mainLog != null) {
             try {
                 mainLog.save(new File(path, fileName));
+                if(withReset) {
+                    mainLog = new YamlConfiguration();
+                }
                 if(logLevel == 2 || logLevel == 3) {
                     log.info("메인 로그를 " + path + "/" + fileName + " 에 저장했습니다.");
                 }
@@ -243,12 +226,15 @@ public class DLogger {
         }
     }
 
-    public void saveLogMapData(String path, String fileName) {
+    public void saveLogMapData(String path, String fileName, boolean withReset) {
         if(!logMap.isEmpty()) {
             for(String name : logMap.keySet()) {
                 YamlConfiguration data = logMap.get(name);
                 try {
                     data.save(new File(path, fileName.replace("%name%", name)));
+                    if(withReset) {
+                        logMap.put(name, new YamlConfiguration());
+                    }
                     if(logLevel == 1 || logLevel == 3) {
                         log.info(name + " 로그를 " + path + "/" + fileName.replace("%name%", name) + " 에 저장했습니다.");
                     }

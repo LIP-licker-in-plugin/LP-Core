@@ -8,6 +8,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -189,10 +191,13 @@ public class DLogger {
                     log.info("DLogger 자동 저장을 시작합니다.");
                 }
                 if(logMapPath != null && logMapName != null) {
-                    saveLogMapData(logMapPath, logMapName);
+                    String date = new SimpleDateFormat("yy-MM-dd-HH-mm-ss").format(new Date());
+                    saveLogMapData(logMapPath, logMapName + "-" + date);
                 }
                 if(mainLogPath != null && mainLogName != null) {
-                    saveMainLogData(mainLogPath, mainLogName);
+                    // get yy-mm-dd-hh-mm-ss
+                    String date = new SimpleDateFormat("yy-MM-dd-HH-mm-ss").format(new Date());
+                    saveMainLogData(mainLogPath, mainLogName + "-" + date);
                 }
                 if(logLevel == 0 || logLevel == 3) {
                     log.info("DLogger 자동 저장을 완료했습니다.");

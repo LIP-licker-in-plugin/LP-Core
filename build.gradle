@@ -85,7 +85,7 @@ publishing {
     }
 }
 group 'github.com/darksoldier1404'
-version = '2.0.6.63'
+version = '2.0.6.64'
 
 
 compileJava.options.encoding = 'UTF-8'

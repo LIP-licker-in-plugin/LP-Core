@@ -230,7 +230,9 @@ public class DLogger {
     public void saveMainLogData(String path, String fileName, boolean withReset) {
         if (mainLog != null) {
             try {
-                mainLog.save(new File(path, fileName+".yml"));
+                if(!mainLog.getKeys(false).isEmpty()) {
+                    mainLog.save(new File(path, fileName+".yml"));
+                }
                 if (withReset) {
                     mainLog = new YamlConfiguration();
                 }
@@ -255,7 +257,9 @@ public class DLogger {
             for (String name : logMap.keySet()) {
                 YamlConfiguration data = logMap.get(name);
                 try {
-                    data.save(new File(path, fileName.replace("%name%", name) + ".yml"));
+                    if(!data.getKeys(false).isEmpty()) {
+                        data.save(new File(path, fileName.replace("%name%", name) + ".yml"));
+                    }
                     if (withReset) {
                         logMap.put(name, new YamlConfiguration());
                     }
